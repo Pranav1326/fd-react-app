@@ -1,0 +1,44 @@
+.account-history-main{
+    width: 60vw;
+    height: fit-content;
+    margin: 0 0 0.8rem;
+    background-color: var(--font-white-color);
+    border-radius: var(--border-outside-width);
+    padding: 0.2rem 2rem;
+    color: var(--main-dark-color);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+.account-history-main:last-child{
+    padding-bottom: 0.5rem;
+}
+
+.transaction{
+    display: flex;
+    flex-direction: row;
+}
+
+.transaction p{
+    font-size: 1.8rem;
+    margin: 0.8rem 0;
+}
+
+.value{
+    text-transform: capitalize;
+}
+
+.createdAt,
+.amount,
+.transaction-mehtod,
+.card-no{
+    margin: 0;
+    font-size: 1.4rem;
+    display: flex;
+}
+
+.createdAt p,
+.amount p,
+.transaction-mehtod p,
+.card-no p{
+    margin: 0.4rem 0;
+}
