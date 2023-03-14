@@ -19,7 +19,7 @@ const Navbar = () => {
                         <Link to={'/wallet'}>
                             <li>Wallet</li>
                         </Link>
-                        <Link to={'/profile'}>
+                        <Link to={'/authuser'}>
                             <li>Profile</li>
                         </Link>
                     </ul>
