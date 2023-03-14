@@ -14,6 +14,7 @@ import UserFds from './User/UserFds/UserFds';
 import Withdraw from './User/Withdraw/Withdraw';
 import AuthAdmin from './Admin/AuthAdmin/AuthAdmin';
 import CreateRate from './Admin/CreateRate/CreateRate';
+import Home from "./Home/Home";
 
 const Main = () => {
   return (
@@ -21,7 +22,7 @@ const Main = () => {
       <Navbar />
       <div className="main">
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/authuser" element={<AuthUser />} />

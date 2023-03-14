@@ -6,6 +6,7 @@
     --heavy-color: #064988;
     --black-color: #000921;
     --font-white-color: #fffff5;
+    --border: 1px solid #fff;
     --border-outside-width: 10px;
     --border-inside-width: 5px;
 }
