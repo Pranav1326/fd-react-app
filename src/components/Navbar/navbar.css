@@ -1,13 +1,15 @@
 .navbar{
     width: 90vw;
     height: 5rem;
-    background-color: var(--main-dark-color);
+    background-color: var(--navbar-color);
     background-blend-mode: multiply;
     border-radius: var(--border-outside-width);
     margin-top: 2rem;
     margin-bottom: 2rem;
     color: var(--font-white-color);
     backdrop-filter: 50px;
+    backdrop-filter: blur(8px);
+    position: fixed;
 }
 
 .navbar-main{
