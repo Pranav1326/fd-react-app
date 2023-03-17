@@ -10,11 +10,12 @@ import Wallet from './User/Wallet/Wallet';
 import CreateFd from './User/CreateFd/CreateFd';
 import Deposit from './User/Deposit/Deposit';
 import EditProfile from './User/EditProfile/EditProfile';
-import UserFds from './User/UserFds/UserFds';
+// import UserFds from './User/UserFds/UserFds';
 import Withdraw from './User/Withdraw/Withdraw';
 import AuthAdmin from './Admin/AuthAdmin/AuthAdmin';
 import CreateRate from './Admin/CreateRate/CreateRate';
 import Home from "./Home/Home";
+import Footer from "./Footer/Footer";
 
 const Main = () => {
   return (
@@ -36,6 +37,7 @@ const Main = () => {
           <Route path="/createrate" element={<CreateRate />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 };

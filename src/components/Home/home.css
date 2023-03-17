@@ -1,5 +1,5 @@
 .home-main{
-    height: calc(90vh - 4rem);
+    /* height: calc(90vh - 4rem); */
     width: 90vw;
     color: var(--main-dark-color);
 }
@@ -94,8 +94,49 @@
     width: 50rem;
     border-style: solid;
     border-width: 0.2rem;
+    border-radius: var(--border-outside-width);
 }
 
 #sectionTwo{
-    height: 90vh;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#sectionTwo table{
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+#sectionTwo table td,
+#sectionTwo table th{
+    padding: 1rem;
+}
+
+#sectionTwo table th{
+    background-color: var(--main-dark-color);
+    color: var(--font-white-color);
+    width: 10rem;
+    text-transform: capitalize;
+}
+
+.duration-title{
+    column-span: 2;
+}
+
+.rates-title{
+    column-span: 5;
+}
+
+#sectionTwo table .duration{
+    text-align: center;
+    background-color: var(--medium-color);
+    color: var(--font-white-color);
+    padding: 1.2rem 2rem;
+}
+
+#sectionTwo table td{
+    background-color: var(--font-white-color);
+    color: var(--main-dark-color);
 }

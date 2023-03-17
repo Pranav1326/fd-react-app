@@ -3,10 +3,11 @@ import './home.css';
 import fdHand from '../../images/fd_hand.png';
 import paisa from '../../images/paisa.png';
 import money from '../../images/money.png';
+import Rates from './Rates';
 
 const Home = () => {
     const ref = useRef(null);
-
+    
     return (
         <div className='home-main'>
             <div className="section-main">
@@ -34,7 +35,12 @@ const Home = () => {
             </div>
             <hr className='hr-sec'/>
             <div id="sectionTwo" ref={ref}>
-
+                {/* Student Rates Table */}
+                <Rates for={"student"}/>
+                {/* Public Rates Table */}
+                <Rates for={"normal"}/>
+                {/* Senior Rates Table */}
+                <Rates for={"senior"}/>
             </div>
         </div>
     );

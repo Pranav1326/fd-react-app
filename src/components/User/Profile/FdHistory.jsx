@@ -31,7 +31,7 @@ const FdHistory = (props) => {
             </div>
             <div className="amount">
                 <p>Maturity Value: </p>
-                <p className='value'> {((props.amount*props.interest)/100) + props.amount} ₹ </p>
+                <p className='value'> {((props.amount*props.interest*(props.months/12))/100) + props.amount} ₹ </p>
             </div>
             
         </div>
