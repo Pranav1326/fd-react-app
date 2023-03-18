@@ -1,0 +1,95 @@
+.signup{
+    height: 100%;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-dark-color);
+}
+
+.register-box{
+    position: relative;
+    animation: onLoadRegister ease 0.5s;
+    width: 20vw;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-dark-color);
+}
+
+.register-box h1{
+    margin: 0 0 0.5rem;
+    font-size: 3rem;
+    color: var(--font-white-color);
+}
+
+#username,
+#password,
+#email{
+    font-size: 1.3rem;
+    padding: 0.7rem 1rem;
+    margin: 0.5rem;
+    background-color: var(--font-white-color);
+    color: var(--main-dark-color);
+    font-weight: 600;
+    letter-spacing: 1px;
+    outline: none;
+    border: none;
+    border-radius: var(--border-outside-width);
+}
+
+#username::placeholder,
+#password::placeholder,
+#email::placeholder{
+    color: var(--medium-color);
+}
+
+.signup-btn{
+    font-size: 1.5rem;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: var(--border-inside-width);
+    background-color: var(--font-white-color);
+    color: var(--main-dark-color);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.signup-btn:hover{
+    cursor: pointer;
+    color: var(--font-white-color);
+    background-color: var(--normal-color);
+}
+
+.register-box p{
+    margin-bottom: -0.5rem;
+    color: var(--font-white-color);
+}
+
+@keyframes onLoadRegister{
+    0%{
+        right: 20rem;
+    }
+    100%{
+        right: 0;
+    }
+}
+
+.signin-btn-signup{
+    animation: textAnim ease-in-out 0.5s;
+    font-size: 1.5rem;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: var(--border-inside-width);
+    color: var(--font-white-color);
+    background-color: var(--main-dark-color);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.signin-btn-signup:hover{
+    background-color: var(--normal-color);
+    color: var(--main-dark-color);
+}

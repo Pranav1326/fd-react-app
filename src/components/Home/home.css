@@ -67,6 +67,7 @@
     width: 20rem;
     height: 20rem;
     position: absolute;
+    z-index: -1;
     margin-left: 21rem;
     margin-top: 10rem;
 }
