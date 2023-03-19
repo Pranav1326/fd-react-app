@@ -1,0 +1,43 @@
+.otp-main{
+    height: 100%;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-white-color);
+}
+
+.otp-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--main-dark-color);
+    border-radius: var(--border-outside-width);
+}
+
+.otp-box form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.otp-box h1{
+    font-size: 3rem;
+    margin: 0;
+}
+
+#otp{
+    font-size: 1.5rem;
+    width: 10rem;
+    padding: 0.5rem 1rem;
+    margin: 1.5rem 1rem 0.5rem;
+    border: 1px solid var(--main-dark-color);
+    outline: none;
+    border-radius: var(--border-outside-width);
+    text-align: center;
+    color: var(--main-dark-color);
+    font-weight: 600;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Otp from '../Otp/Otp';
 import './signup.css';
 
 const Signup = ({setUserExists}) => {
@@ -8,6 +9,8 @@ const Signup = ({setUserExists}) => {
     email: "",
     password: "",
   });
+  // eslint-disable-next-line
+  const [ otp, setOtp ] = useState(false);
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,6 +19,12 @@ const Signup = ({setUserExists}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+  }
+  
+  if(otp){
+    return(
+      <Otp />
+    );
   }
   
   return (
