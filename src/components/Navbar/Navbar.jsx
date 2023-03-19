@@ -19,8 +19,8 @@ const Navbar = () => {
                         <Link to={'/wallet'}>
                             <li>Wallet</li>
                         </Link>
-                        <Link to={'/authuser'}>
-                            <li>Profile</li>
+                        <Link to={'/auth'}>
+                            <li id='auth'>Profile</li>
                         </Link>
                     </ul>
                 </div>

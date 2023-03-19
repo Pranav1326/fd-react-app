@@ -16,6 +16,7 @@ import AuthAdmin from './Admin/AuthAdmin/AuthAdmin';
 import CreateRate from './Admin/CreateRate/CreateRate';
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
+import Auth from "./Auth/Auth";
 
 const Main = () => {
   return (
@@ -26,8 +27,7 @@ const Main = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/authuser" element={<AuthUser />} />
-          <Route path="/authadmin" element={<AuthAdmin />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/wallet" element={<Wallet />} />

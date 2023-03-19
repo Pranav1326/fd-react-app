@@ -9,6 +9,7 @@
     height: 100%;
     width: 90vw;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     color: var(--main-dark-color);
@@ -20,11 +21,18 @@
     animation: onLoadLogin ease-in-out 0.5s;
     width: 20vw;
     padding: 2rem;
+    background-color: var(--main-dark-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--main-dark-color);
+}
+
+.login-box form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-box h1{
@@ -136,4 +144,23 @@
 .signup-btn-signin:hover{
     background-color: var(--normal-color);
     color: var(--main-dark-color);
+}
+
+.admin-check{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-bottom: -3rem;
+}
+
+.signin-btn-admin{
+    animation: textAnim ease-in-out 0.5s;
+    font-size: 1.5rem;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: var(--border-inside-width);
+    color: var(--font-white-color);
+    background-color: var(--main-dark-color);
+    font-weight: 600;
+    margin-top: 1rem;
 }

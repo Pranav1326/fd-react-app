@@ -9,9 +9,19 @@ const AuthUser = () => {
   
   return (
     <div className='authuser'>
-      {userExits ? <Signin setUserExists={setUserExists} /> : <Signup setUserExists={setUserExists} />}
+      {
+          userExits 
+        ? 
+          <Signin 
+            setUserExists={setUserExists}
+          /> 
+        : 
+          <Signup 
+            setUserExists={setUserExists}
+          />
+      }
     </div>
-  )
+  );
 }
 
-export default AuthUser
+export default AuthUser;
