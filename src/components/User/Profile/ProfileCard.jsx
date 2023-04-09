@@ -23,7 +23,7 @@ const ProfileCard = () => {
                         Balance: 
                     </p>
                     <p className='value'>
-                        {"1,70,00,000 ₹"}
+                        {"7000000 ₹"}
                     </p>
                 </div>
                 <div className="total-fds">
