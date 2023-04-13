@@ -9,7 +9,7 @@
 
 .heading{
     font-size: 2.4rem;
-    width: 60vw;
+    width: calc(60vw - 1px);
     margin-top: 0;
     background-color: var(--font-white-color);
     border-radius: var(--border-outside-width);
@@ -19,7 +19,7 @@
 }
 
 .profilecard-btns{
-    width: 100%;
+    width: fit-content;
 }
 
 .account-btns{
@@ -39,6 +39,7 @@
     font-weight: 600;
     margin-right: 0.5rem;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    width: 100%;
 }
 
 .account-btn:hover{

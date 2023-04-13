@@ -1,7 +1,7 @@
 import React from 'react';
-import './profilecard.css'
+import '../../User/Profile/profilecard.css'
 
-const ProfileCard = (props) => {
+const AdminProfileCard = (props) => {
     return (
         <div className='profile-card-main'>
             <div className="profile-pic">
@@ -20,10 +20,10 @@ const ProfileCard = (props) => {
                 </div>
                 <div className="balance">
                     <p>
-                        Balance: 
+                        Revenue: 
                     </p>
                     <p className='value'>
-                        {props.balance}
+                        {props.revenue} ₹
                     </p>
                 </div>
                 <div className="total-fds">
@@ -65,4 +65,4 @@ const ProfileCard = (props) => {
     );
 }
 
-export default ProfileCard;
+export default AdminProfileCard;

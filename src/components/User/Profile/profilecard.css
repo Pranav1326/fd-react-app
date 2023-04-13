@@ -1,11 +1,11 @@
 .profile-card-main{
-    width: 20vw;
+    width: 22vw;
     height: fit-content;
     margin-top: 1rem;
     background-color: var(--font-white-color);
     border: 10px solid var(--font-white-color);
     border-radius: var(--border-outside-width);
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     color: var(--main-dark-color);
     box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
 }
@@ -65,7 +65,7 @@
 .total-fds p,
 .fd-status p{
     margin: 0.9rem 0;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .value{

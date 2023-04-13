@@ -5,6 +5,13 @@ const FdHistory = (props) => {
     const createdAtDate = props.createdAt.toLocaleDateString();
     return (
         <div className='fd-history-main'>
+            {
+                props.user &&
+                <div className="user">
+                    <p>User: </p>
+                    <p className='value'> {props.user} </p>
+                </div>
+            }
             <div className="transaction">
                 <p>Transaction: </p>
                 <p className='value'> {props.transaction} </p>

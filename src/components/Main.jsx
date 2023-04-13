@@ -15,6 +15,7 @@ import CreateRate from './Admin/CreateRate/CreateRate';
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
 import Auth from "./Auth/Auth";
+import AdminDashboard from "./Admin/AdminDashboard/AdminDashboard";
 
 const Main = () => {
   return (
@@ -33,6 +34,7 @@ const Main = () => {
           <Route path="/deposit" element={<Deposit />} />
           <Route path="/withdraw" element={<Withdraw />} />
           <Route path="/createrate" element={<CreateRate />} />
+          <Route path="/admindashboard" element={<AdminDashboard />} />
         </Routes>
       </div>
       <Footer />
