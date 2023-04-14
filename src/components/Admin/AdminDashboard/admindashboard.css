@@ -10,3 +10,9 @@
 .details-for-admin{
     margin-top: 1rem;
 }
+
+.fd-history{
+    height: 82vh;
+    margin-bottom: 2rem;
+    overflow: scroll;
+}

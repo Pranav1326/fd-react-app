@@ -1,0 +1,51 @@
+.current-rates-main{
+    width: calc(64vw + 0.3rem);
+    height: 82vh;
+    margin-bottom: 2rem;
+    overflow: scroll;
+}
+
+.current-rates-div{
+    height: 82vh;
+    overflow: scroll;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+table td,
+table th{
+    padding: 1rem;
+}
+
+table th{
+    background-color: var(--main-dark-color);
+    color: var(--font-white-color);
+    width: 10rem;
+    text-transform: capitalize;
+}
+
+.duration-title{
+    column-span: 2;
+}
+
+.rates-title{
+    column-span: 5;
+}
+
+table .duration{
+    text-align: center;
+    background-color: var(--medium-color);
+    color: var(--font-white-color);
+    padding: 1.2rem 2rem;
+}
+
+table td{
+    background-color: var(--font-white-color);
+    color: var(--main-dark-color);
+}
