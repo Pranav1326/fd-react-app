@@ -52,6 +52,18 @@ const Profile = () => {
               setAccountBtn(!accountBtn)
               setBtn("account")
             }}>Account History</button>
+          <button 
+            className={btn === "profile" ? 'account-btn active' : 'account-btn'} 
+            onClick={() => {
+              setAccountBtn(!accountBtn)
+              setBtn("profile")
+            }}>Profile</button>
+          <button 
+            className={btn === "logout" ? 'account-btn active' : 'account-btn'} 
+            onClick={() => {
+              setAccountBtn(!accountBtn)
+              setBtn("logout")
+            }}>Logout</button>
         </div>
       </div>
       <div className="account-details">
