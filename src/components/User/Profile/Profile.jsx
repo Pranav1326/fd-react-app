@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AccountHistory from './AccountHistory';
+import ProfileDetails from './ProfileDetails';
 import FdHistory from './FdHistory';
 import './profile.css';
 import ProfileCard from './ProfileCard';
@@ -8,7 +9,7 @@ import jwtPayloadDecoder from 'jwt-payload-decoder';
 const Profile = () => {
   const [ fdBtn, setfdBtn ] = useState(false);
   const [ accountBtn, setAccountBtn ] = useState(false);
-  const [ btn, setBtn ] = useState("fd");
+  const [ btn, setBtn ] = useState("profile");
 
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(localStorage.getItem("token")));
@@ -27,6 +28,60 @@ const Profile = () => {
       />
     );
   });
+
+  const renderAccountDetails = (btn) => {
+    switch (btn) {
+      case "fd":
+        return(
+          <div className="fd-history">
+            <h1 className='heading'> FD History </h1>
+            {fdHistory}
+          </div>
+        );
+      case "account":
+        return(
+          <div className="account-history">
+          <h1 className='heading'> Account History </h1>
+
+          <AccountHistory
+            transaction={"created fd"}
+            createdAt={new Date()}
+            amount={"5000"}
+          />
+          <AccountHistory
+            transaction={"withdraw"}
+            createdAt={new Date()}
+            amount={5000}
+            transactionMehtod={"card"}
+            cardNo={"1234"}
+          />
+          <AccountHistory
+            transaction={"created fd"}
+            createdAt={new Date()}
+            amount={"5000"}
+          />
+          <AccountHistory
+            transaction={"created fd"}
+            createdAt={new Date()}
+            amount={"10000"}
+          />
+          <AccountHistory
+            transaction={"deposit"}
+            createdAt={new Date()}
+            amount={20000}
+            transactionMehtod={"card"}
+            cardNo={"0578"}
+          />
+        </div>
+        );
+      case "profile":
+        return(
+          <ProfileDetails />
+        );
+      default:
+        return;
+    }
+  }
 
   return (
     <div className='profile-main'>
@@ -57,7 +112,7 @@ const Profile = () => {
             onClick={() => {
               setAccountBtn(!accountBtn)
               setBtn("profile")
-            }}>Profile</button>
+            }}>Profile Details</button>
           <button 
             className={btn === "logout" ? 'account-btn active' : 'account-btn'} 
             onClick={() => {
@@ -67,47 +122,7 @@ const Profile = () => {
         </div>
       </div>
       <div className="account-details">
-        {
-          btn === "fd" ? 
-            <div className="fd-history">
-              <h1 className='heading'> FD History </h1>
-              {fdHistory}
-            </div>
-          :
-            <div className="account-history">
-              <h1 className='heading'> Account History </h1>
-
-              <AccountHistory
-                transaction={"created fd"}
-                createdAt={new Date()}
-                amount={"5000"}
-              />
-              <AccountHistory
-                transaction={"withdraw"}
-                createdAt={new Date()}
-                amount={5000}
-                transactionMehtod={"card"}
-                cardNo={"1234"}
-              />
-              <AccountHistory
-                transaction={"created fd"}
-                createdAt={new Date()}
-                amount={"5000"}
-              />
-              <AccountHistory
-                transaction={"created fd"}
-                createdAt={new Date()}
-                amount={"10000"}
-              />
-              <AccountHistory
-                transaction={"deposit"}
-                createdAt={new Date()}
-                amount={20000}
-                transactionMehtod={"card"}
-                cardNo={"0578"}
-              />
-            </div>
-        }
+        {renderAccountDetails(btn)}
       </div>
     </div>
   );

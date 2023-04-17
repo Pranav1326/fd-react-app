@@ -2,7 +2,6 @@ import React from 'react';
 import './fdhistory.css'
 
 const FdHistory = (props) => {
-    const createdAtDate = props.createdAt.toLocaleDateString();
     return (
         <div className='fd-history-main'>
             {
@@ -40,7 +39,6 @@ const FdHistory = (props) => {
                 <p>Maturity Value: </p>
                 <p className='value'> {Math.round(props.maturityValue)} ₹ </p>
             </div>
-            
         </div>
     );
 }

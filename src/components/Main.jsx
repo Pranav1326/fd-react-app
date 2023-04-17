@@ -10,7 +10,7 @@ import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
 import Auth from "./Auth/Auth";
 import AdminDashboard from "./Admin/AdminDashboard/AdminDashboard";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Main = () => {
 
