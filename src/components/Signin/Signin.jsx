@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
 import './signin.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { userLogin } from '../../api/userApi';
 
 const Signin = ({setUserExists}) => {
 
+  const error = useSelector(state => state.userReducer.error);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // Internal State
   const [ data, setData ] = useState({
     username: "",
     password: "",
   });
   
+  // Handling Form Submit-event
   const handleSubmit = (e) => {
     e.preventDefault();
     const ifAdmin = data.username.split('.')[0];
+    userLogin(data, dispatch, navigate);
     if(ifAdmin === "admin")
       alert(ifAdmin);
   }
   
+  // Input onChange event handling
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData(preValue => ({ ...preValue, [name]: value }));

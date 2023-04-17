@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './profilecard.css'
 
 const ProfileCard = (props) => {
+
+    const runningFds = props && props.runningfds.filter(e => e.status === "running");
+    const matureFds = props && props.maturedfds.filter(e => e.status === "matured");
+    const brokenfds = props && props.brokenfds.filter(e => e.status === "broken");
+
     return (
         <div className='profile-card-main'>
             <div className="profile-pic">
@@ -40,7 +45,7 @@ const ProfileCard = (props) => {
                             Running:
                         </p>
                         <p className='value'>
-                            {props.runningfds}
+                            {runningFds.length}
                         </p>
                     </div>
                     <div className="matured">
@@ -48,7 +53,7 @@ const ProfileCard = (props) => {
                             Matured:
                         </p>
                         <p className='value'>
-                            {props.maturedfds}
+                            {matureFds.length}
                         </p>
                     </div>
                     <div className="broken">
@@ -56,7 +61,7 @@ const ProfileCard = (props) => {
                             Broken: {" "}
                         </p>
                         <p className='value'>
-                            {props.brokenfds}
+                            {brokenfds.length}
                         </p>
                     </div>
                 </div>

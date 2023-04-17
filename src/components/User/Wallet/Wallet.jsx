@@ -3,7 +3,8 @@ import Deposit from '../Deposit/Deposit';
 import AccountHistory from '../Profile/AccountHistory';
 import ProfileCard from '../Profile/ProfileCard';
 import Withdraw from '../Withdraw/Withdraw';
-import './wallet.css'
+import './wallet.css';
+import jwtPayloadDecoder from 'jwt-payload-decoder';
 
 const Wallet = () => {
   const [ transactionBtn, setTransactionBtn ] = useState(false);
@@ -11,6 +12,9 @@ const Wallet = () => {
   const [ withdrawBtn, setWithdrawBtn ] = useState(false);
   const [ btn, setBtn ] = useState("transaction");
 
+  // user
+  const user = jwtPayloadDecoder.getPayload(JSON.parse(localStorage.getItem("token")));
+  
   const renderComponent = (btn) => {
     switch (btn) {
       case "deposit":
@@ -62,7 +66,14 @@ const Wallet = () => {
   return (
     <div className='profile-main'>
       <div className="profilecard-btns">
-        <ProfileCard />
+        <ProfileCard 
+            username={user.userInfo.username}
+            balance={user.walletDetails.money}
+            totalfds={user.FdDetails.length}
+            runningfds={user.FdDetails}
+            maturedfds={user.FdDetails}
+            brokenfds={user.FdDetails}
+          />
         <div className="account-btns">
           <button 
             className={btn === "transaction" ? 'account-btn active' : 'account-btn'} 
