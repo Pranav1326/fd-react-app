@@ -1,7 +1,11 @@
 import React from 'react';
 import './profiledetails.css';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileDetails = (props) => {
+
+  const navigate = useNavigate();
+
   return (
     <div className='profile-details-main'>
       <h1 className="heading">Profile Details</h1>
@@ -41,7 +45,7 @@ const ProfileDetails = (props) => {
           {/* <p>{props.username}</p> */}
           <p>{"12000"}</p>
         </div>
-        <button className='edit-profile-btn'>Edit Profile</button>
+        <button className='edit-profile-btn' onClick={() => navigate('/editprofile')}>Edit Profile</button>
       </div>
     </div>
   );

@@ -1,0 +1,69 @@
+.edit-profile-main{
+    width: 90vw;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    background-color: var(--font-white-color);
+    border-radius: var(--border-outside-width);
+}
+
+.edit-profile-heading{
+    font-size: 2.4rem;
+    margin: 0;
+    background-color: var(--font-white-color);
+    border-radius: var(--border-outside-width);
+    padding: 1rem 2rem;
+    color: var(--main-dark-color);
+}
+
+.edit-profile-div{
+    padding: 0 2rem;
+    font-size: 1.6rem;
+    color: var(--main-dark-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-profile-div>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.edit-profile-div>div span{
+    font-weight: 600;
+}
+
+.edit-profile-div>div p{
+    margin: 0.5rem;
+    font-weight: 700;
+}
+
+.edit-profile-div>div input{
+    font-size: 1.6rem;
+    padding: 0.2rem 0.6rem;
+    color: var(--main-dark-color);
+    width: 26vw;
+    text-align: right;
+    border: 1px solid var(--main-dark-color);
+    border-radius: var(--border-inside-width);
+}
+
+.edit-profile-save-btn{
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: var(--border-outside-width);
+    border: none;
+    background-color: var(--main-dark-color);
+    color: var(--font-white-color);
+    font-weight: 600;
+    margin-right: 0.5rem;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    margin: auto;
+}
+
+.edit-profile-save-btn:hover{
+    cursor: pointer;
+    color: var(--main-dark-color);
+    background-color: var(--main-bg-color);
+}
