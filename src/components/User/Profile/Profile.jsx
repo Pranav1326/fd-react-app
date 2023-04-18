@@ -6,11 +6,17 @@ import './profile.css';
 import ProfileCard from './ProfileCard';
 import jwtPayloadDecoder from 'jwt-payload-decoder';
 import CreateFd from '../CreateFd/CreateFd';
+import { logout } from '../../../api/userApi';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const [ fdBtn, setfdBtn ] = useState(false);
   const [ accountBtn, setAccountBtn ] = useState(false);
-  const [ btn, setBtn ] = useState("createfd");
+  const [ btn, setBtn ] = useState("fd");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(localStorage.getItem("token")));
@@ -139,8 +145,7 @@ const Profile = () => {
           <button 
             className={btn === "logout" ? 'account-btn active' : 'account-btn'} 
             onClick={() => {
-              setAccountBtn(!accountBtn)
-              setBtn("logout")
+              logout(dispatch, navigate);
             }}>Logout</button>
         </div>
       </div>
