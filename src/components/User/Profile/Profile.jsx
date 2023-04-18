@@ -5,11 +5,12 @@ import FdHistory from './FdHistory';
 import './profile.css';
 import ProfileCard from './ProfileCard';
 import jwtPayloadDecoder from 'jwt-payload-decoder';
+import CreateFd from '../CreateFd/CreateFd';
 
 const Profile = () => {
   const [ fdBtn, setfdBtn ] = useState(false);
   const [ accountBtn, setAccountBtn ] = useState(false);
-  const [ btn, setBtn ] = useState("profile");
+  const [ btn, setBtn ] = useState("createfd");
 
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(localStorage.getItem("token")));
@@ -31,6 +32,13 @@ const Profile = () => {
 
   const renderAccountDetails = (btn) => {
     switch (btn) {
+      case "createfd":
+        return(
+          <div className="fd-history">
+            <h1 className='heading'> Create Fixed Deposit </h1>
+            {<CreateFd />}
+          </div>
+        );
       case "fd":
         return(
           <div className="fd-history">
@@ -76,7 +84,14 @@ const Profile = () => {
         );
       case "profile":
         return(
-          <ProfileDetails />
+          <ProfileDetails 
+            username={user.userInfo.username}
+            email={user.userInfo.email}
+            account={"Student"}
+            work={"-"}
+            totalfd={user.userInfo.Fd.length}
+            totalBalance={user.walletDetails.money}
+          />
         );
       default:
         return;
@@ -86,6 +101,7 @@ const Profile = () => {
   return (
     <div className='profile-main'>
       <div className="profilecard-btns">
+        {/* Profile Details Card */}
         <ProfileCard 
           username={user.userInfo.username}
           balance={user.walletDetails.money}
@@ -94,7 +110,14 @@ const Profile = () => {
           maturedfds={user.FdDetails}
           brokenfds={user.FdDetails}
         />
+        {/* Buttons */}
         <div className="account-btns">
+          <button 
+            className={btn === "createfd" ? 'account-btn active' : 'account-btn'} 
+            onClick={() => {
+              setfdBtn(!fdBtn)
+              setBtn("createfd")
+            }}>Create FD</button>
           <button 
             className={btn === "fd" ? 'account-btn active' : 'account-btn'} 
             onClick={() => {

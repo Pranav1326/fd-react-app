@@ -8,10 +8,16 @@ const EditProfile = () => {
     email: "visavadiapa@gmail.com",
     account: "student",
     work: "Student",
+    dob: "2003-03-14",
     totalfds: "6",
     totalbalance: "6500",
     availablebalance: "500"
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData(preValue => ({ ...preValue, [name]: value }));
+  }
 
   return (
     <div className='edit-profile-main'>
@@ -19,15 +25,19 @@ const EditProfile = () => {
       <div className="edit-profile-div">
         <div className="name">
           <span>Name</span>
-          <input type='text' value={profileData.username}/>
+          <input type='text' name='username' value={profileData.username} onChange={handleChange}/>
         </div>
         <div className="email">
           <span>Email</span>
-          <input type="text" value={profileData.email}/>
+          <input type="text" name='email' value={profileData.email} onChange={handleChange}/>
         </div>
         <div className="work">
           <span>Work</span>
-          <input type="text" value={profileData.work}/>
+          <input type="text" name='work' value={profileData.work} onChange={handleChange}/>
+        </div>
+        <div className="dob">
+          <span>Date of Birth</span>
+          <input type="date" value={profileData.dob} onChange={handleChange}/>
         </div>
         <div className="account">
           <span>Account</span>

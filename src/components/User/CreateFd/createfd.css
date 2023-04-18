@@ -1,0 +1,107 @@
+.create-fd-main{
+    max-width: 63vw;
+    height: fit-content;
+    background-color: var(--font-white-color);
+    border-radius: var(--border-outside-width);
+    margin-bottom: 2rem;
+    padding: 3rem;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+.create-fd-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.create-fd-title{
+    font-size: 2.4rem;
+    margin: 0;
+    background-color: var(--font-white-color);
+    border-radius: var(--border-outside-width);
+    padding: 1rem 2rem;
+    color: var(--main-dark-color);
+}
+
+span.title{
+    color: var(--main-dark-color);
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.duration-div,
+.rate-div,
+.amount-div{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.rate-div,
+.amount-div{
+    align-items: center;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.rate-value{
+    font-size: 1.6rem;
+    color: var(--main-dark-color);
+    font-weight: 600;
+}
+
+.duration-sub-div{
+    display: flex;
+    width: 36vw;
+    flex-wrap: wrap;
+}
+
+.duration-month{
+    margin: 0.5rem;
+    min-width: 7rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.duration-sub-div>input{
+    margin: 0.3rem 0.5rem;
+}
+
+.amount-value{
+    font-size: 1.6rem;
+    padding: 0.5rem 0.6rem;
+    color: var(--main-dark-color);
+    width: 26vw;
+    text-align: right;
+    border: 1px solid var(--main-dark-color);
+    border-radius: var(--border-inside-width);
+    padding-right: 2rem;
+}
+
+.rupee-symbol{
+    font-size: 1.6rem;
+    color: var(--main-dark-color);
+    font-weight: 600;
+    position: absolute;
+    right: 0.5rem;
+}
+
+.create-fd-btn{
+    font-size: 1.5rem;
+    width: fit-content;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: var(--border-outside-width);
+    border: none;
+    background-color: var(--main-dark-color);
+    color: var(--font-white-color);
+    font-weight: 600;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    align-self: center;
+}
+
+.create-fd-btn:hover{
+    cursor: pointer;
+    color: var(--main-dark-color);
+    background-color: var(--main-bg-color);
+}

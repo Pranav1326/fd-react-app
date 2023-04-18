@@ -4,7 +4,6 @@ import "./main.css";
 import Navbar from "./Navbar/Navbar";
 import Profile from './User/Profile/Profile';
 import Wallet from './User/Wallet/Wallet';
-import CreateFd from './User/CreateFd/CreateFd';
 import EditProfile from './User/EditProfile/EditProfile';
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
@@ -26,7 +25,6 @@ const Main = () => {
           <Route path="/profile" element={ user ? <Profile /> : <Auth /> } />
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/wallet" element={user ? <Wallet /> : <Auth /> } />
-          <Route path="/createfd" element={<CreateFd />} />
           <Route path="/admindashboard" element={<AdminDashboard />} />
         </Routes>
       </div>

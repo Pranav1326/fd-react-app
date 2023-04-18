@@ -12,39 +12,33 @@ const ProfileDetails = (props) => {
       <div className="profile-details-div">
         <div className="name">
           <span>Name</span>
-          {/* <p>{props.username}</p> */}
-          <p>{"pranav1326"}</p>
+          <p>{props.username}</p>
         </div>
         <div className="email">
           <span>Email</span>
-          {/* <p>{props.username}</p> */}
-          <p>{"visavadiapa@gmail.com"}</p>
+          <p>{props.email}</p>
         </div>
         <div className="account">
           <span>Account</span>
-          {/* <p>{props.username}</p> */}
-          <p>{"Student"}</p>
+          <p>{props.account}</p>
         </div>
         <div className="work">
           <span>Work</span>
-          {/* <p>{props.username}</p> */}
-          <p>{"-"}</p>
+          <p>{props.work}</p>
         </div>
         <div className="totalfds">
           <span>Total FDs</span>
-          {/* <p>{props.username}</p> */}
-          <p>{"7"}</p>
+          <p>{props.totalfd}</p>
         </div>
         <div className="totalbalance">
           <span>Total Balance</span>
-          {/* <p>{props.username}</p> */}
-          <p>{"12000"}</p>
+          <p>{props.totalBalance}</p>
         </div>
-        <div className="balance">
+        {/* <div className="balance">
           <span>Available Balance</span>
-          {/* <p>{props.username}</p> */}
+          <p>{props.username}</p>
           <p>{"12000"}</p>
-        </div>
+        </div> */}
         <button className='edit-profile-btn' onClick={() => navigate('/editprofile')}>Edit Profile</button>
       </div>
     </div>
