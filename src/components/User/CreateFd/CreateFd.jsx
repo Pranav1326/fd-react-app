@@ -41,7 +41,16 @@ const CreateFd = () => {
         </div>
         <div className="amount-div">
           <span className='title'>Amount</span>
-          <input type="text" name="amount" className='amount-value'/>
+          <input 
+            type="text" 
+            name="amount" 
+            className='amount-value'
+            minLength='1'
+            maxLength='8'
+            onInput={(e) =>  {
+              e.target.value = e.target.value.replace(/[^0-9]/g, '')
+            }} 
+          />
           <p className="rupee-symbol">₹</p>
         </div>
         <button className='create-fd-btn'>Create FD</button>
