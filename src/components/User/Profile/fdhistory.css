@@ -1,5 +1,5 @@
 .fd-history-main{
-    width: calc(60vw - 1px);
+    /* width: calc(60vw - 1px); */
     height: fit-content;
     margin: 0 0 0.8rem;
     background-color: var(--font-white-color);
@@ -9,9 +9,9 @@
     box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
 }
 
-.account-history-main:last-child{
+/* .account-history-main:last-child{
     padding-bottom: 0.5rem;
-}
+} */
 
 .transaction,
 .user{

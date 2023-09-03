@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    token: JSON.parse(localStorage.getItem("token")) || null,
+    token: JSON.parse(sessionStorage.getItem("fdt")) || null,
     isFetching: false,
     error: false
 }
@@ -10,6 +10,21 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        REGISTRATION_START: (state) => {
+            state.token = null;
+            state.isFetching = true;
+            state.error = false;
+        },
+        OTP_AUTH_FAIL: (state, action) => {
+            state.token = null;
+            state.isFetching = false;
+            state.error = action.payload;
+        },
+        REGISTRATION_FAILURE: (state, action) => {
+            state.token = null;
+            state.isFetching = false;
+            state.error = action.payload;
+        },
         LOGIN_START: (state) => {
             state.token = null;
             state.isFetching = true;
@@ -38,6 +53,6 @@ export const userSlice = createSlice({
     },
 });
 
-export const { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, USER_UPDATE } = userSlice.actions;
+export const { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, USER_UPDATE, REGISTRATION_START, REGISTRATION_FAILURE, OTP_AUTH_FAIL } = userSlice.actions;
 
 export default userSlice.reducer;

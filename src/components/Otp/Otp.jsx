@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import './otp.css';
+import { otpRegister } from '../../api/userApi';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const Otp = () => {
+const Otp = (props) => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [otp, setOtp] = useState("");
     
     const handleSubmit = e => {
         e.preventDefault();
-        alert(otp);
+        otpRegister({ ...props.data, otp }, dispatch, navigate, props.setUserExists);
     }
     
     return (

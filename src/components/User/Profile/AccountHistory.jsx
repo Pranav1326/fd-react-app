@@ -18,7 +18,7 @@ const AccountHistory = (props) => {
                 <p>Amount: </p>
                 <p className='value'> {props.amount} ₹ </p>
             </div>
-            {(props.transaction === "deposit" || props.transaction === "withdraw")
+            {/* {(props.transaction === "deposit" || props.transaction === "withdraw")
                 ?
             (<> 
                 <div className="transaction-mehtod">
@@ -30,7 +30,7 @@ const AccountHistory = (props) => {
                     <p className='value'> {props.cardNo} </p>
                 </div>
             </>)
-            : ""}
+            : ""} */}
         </div>
     );
 }

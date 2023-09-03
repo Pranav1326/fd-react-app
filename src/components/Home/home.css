@@ -51,24 +51,24 @@
 }
 
 .fdHand-img{
-    width: 16rem;
-    height: 16rem;
+    width: 13rem;
+    height: 13rem;
     margin-left: 5rem;
 }
 
 .money-img{
-    width: 17rem;
-    height: 17rem;
+    width: 14rem;
+    height: 14rem;
     margin-top: 3rem;
     margin-left: 3rem;
 }
 
 .paisa-img{
-    width: 20rem;
-    height: 20rem;
+    width: 18rem;
+    height: 18rem;
     position: absolute;
     z-index: -1;
-    margin-left: 21rem;
+    margin-left: 15rem;
     margin-top: 10rem;
 }
 
@@ -93,6 +93,7 @@
     border-color: var(--medium-color);
     color: var(--main-dark-color);
     width: 50rem;
+    margin-top: 5rem;
     border-style: solid;
     border-width: 0.2rem;
     border-radius: var(--border-outside-width);
@@ -140,4 +141,21 @@
 #sectionTwo table td{
     background-color: var(--font-white-color);
     color: var(--main-dark-color);
+}
+
+@media only screen and (max-width: 1440px) {
+    .title-text-images{
+        align-items: center;
+    }
+    .fdHand-img{
+        max-width: 20rem;
+        height: auto;
+        margin-left: 7rem;
+    }
+    .money-img{
+        display: none;
+    }
+    .paisa-img{
+        display: none;
+    }
 }

@@ -13,7 +13,7 @@ const Wallet = () => {
   const [ btn, setBtn ] = useState("transaction");
 
   // user
-  const user = jwtPayloadDecoder.getPayload(JSON.parse(localStorage.getItem("token")));
+  const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
   
   const renderComponent = (btn) => {
     switch (btn) {

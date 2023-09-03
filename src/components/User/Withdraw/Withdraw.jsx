@@ -1,21 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './withdraw.css'
 
 const Withdraw = () => {
+
+  const [ amount, setAmount ] = useState('');
+  const [ showAlert, setShowAlert ] = useState(false);
+
+  const handleWithdraw = () => {
+    if(amount<100 || amount>1000000){
+      setShowAlert(true);
+    }
+    else{
+      alert("Success");
+    }
+  }
+
+  const handleChange = e => {
+    setAmount(e.target.value);
+  }
+
   return (
     <div className='deposit-main'>
       <h1 className='heading-main'> Withdraw Cash </h1>
       <div className="box-card-details">
-        <div className="card"></div>
+        {/* <div className="card"></div> */}
         <div className="details">
-          <h1>Card Details</h1>
+          {/* <h1>Card Details</h1> */}
           {/* Name on Card */}
-          <div className="card-name">
+          {/* <div className="card-name">
             <span>Name on Card</span>
             <input type="text" className='card-input-value' name='cardName' />
-          </div>
+          </div> */}
           {/* Card Number */}
-          <div className="card-number">
+          {/* <div className="card-number">
             <span>Card Number</span>
             <input 
               type="number" 
@@ -25,13 +42,11 @@ const Withdraw = () => {
               onInput={(e) =>  {
                 e.target.value = e.target.value.replace(/^(?:4[0-9]{12}(?:[0-9]{3})?)$/);
               }}
-              // maxLength='16'
-              // minLength='16'
             />
-          </div>
+          </div> */}
           <div className="card-date-cvv">
             {/* Card Valid Date */}
-            <div className="card-date">
+            {/* <div className="card-date">
               <span>Valid Through</span>
               <div className="date-inputs">
                 <input 
@@ -58,9 +73,9 @@ const Withdraw = () => {
                   minLength='2'
                 />
               </div>
-            </div>
+            </div> */}
             {/* CVV */}
-            <div className="card-cvv">
+            {/* <div className="card-cvv">
               <span>CVV</span>
               <input 
                 type="text" 
@@ -73,7 +88,7 @@ const Withdraw = () => {
                 maxLength='3'
                 minLength='3'
               />
-            </div>
+            </div> */}
           </div>
           {/* Deposit Amount */}
           <div className="deposit-amount">
@@ -81,18 +96,16 @@ const Withdraw = () => {
             <input 
               type="number" 
               className='card-input-value' 
-              // inputMode='numeric'
-              name='cardNumber' 
-              onInput={(e) =>  {
-                e.target.value = e.target.value.replace(/[^0-9]/g, '')
-              }}
-              max='10000000'
-              maxLength='4'
-              minLength='4'
+              name='amount'
+              value={amount}
+              onChange={handleChange}
+              maxLength='7'
+              minLength='3'
             />
           </div>
+          { showAlert ? <span className='alert'>*Please enter between 100₹ to 10,00,000₹</span> : "" }
           <div className="deposit-btn-div">
-            <button className='deposit-btn'>WITHDRAW CASH</button>
+            <button className='deposit-btn' onClick={handleWithdraw}>WITHDRAW CASH</button>
           </div>
         </div>
       </div>

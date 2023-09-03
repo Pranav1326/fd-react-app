@@ -12,7 +12,11 @@
 }
 
 .fd-history{
-    height: 82vh;
+    height: 100vh;
     margin-bottom: 2rem;
     overflow: scroll;
+}
+
+.fd-history:last-child{
+    margin-bottom: 0;
 }

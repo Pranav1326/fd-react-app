@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import Otp from '../Otp/Otp';
 import './signup.css';
+import { register } from '../../api/userApi';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Signup = ({setUserExists}) => {
+
+  const dispatch = useDispatch();
+
+  const error = useSelector(state => state.userReducer.error);
 
   const [ data, setData ] = useState({
     username: "",
@@ -19,11 +25,21 @@ const Signup = ({setUserExists}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    register(data, dispatch, setOtp);
+    if(error){
+      alert(error);
+    }
+    else{
+
+    }
   }
   
   if(otp){
     return(
-      <Otp />
+      <Otp
+        setUserExists={setUserExists}
+        data={data}
+      />
     );
   }
   
@@ -39,15 +55,15 @@ const Signup = ({setUserExists}) => {
           <form action="" method="post" onSubmit={handleSubmit}>
             <h1>Create Account</h1>
             <div className="username-div">
-              <input type="text" name="username" value={data.username} onChange={handleChange} id="username" placeholder='👤 Username'/>
+              <input type="text" name="username" value={data.username} onChange={handleChange} id="username" placeholder='👤 Username' required/>
             </div>
             <div className="email-div">
-              <input type="email" name="email" value={data.email} onChange={handleChange} id="email" placeholder='📧 Email'/>
+              <input type="email" name="email" value={data.email} onChange={handleChange} id="email" placeholder='📧 Email' required/>
             </div>
             <div className="password-div">
-              <input type="password" name="password" value={data.password} onChange={handleChange} id="password" placeholder='🔒 Password'/>
+              <input type="password" name="password" value={data.password} onChange={handleChange} id="password" placeholder='🔒 Password' required/>
             </div>
-            <button className='signup-btn'>Sign Up</button>
+            <button className='signup-btn' type='submit' onClick={handleSubmit}>Sign Up</button>
           </form>
         </div>
       </div>

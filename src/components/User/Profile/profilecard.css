@@ -25,6 +25,7 @@
 }                                                   
 
 .username p{
+    text-transform: uppercase;
     font-size: 2rem;
     font-weight: 600;
     margin: 0;
