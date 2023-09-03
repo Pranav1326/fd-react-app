@@ -2,8 +2,9 @@ import React from 'react';
 import './accounthistory.css'
 
 const AccountHistory = (props) => {
-    const createdAtDate = props.createdAt.toLocaleDateString();
-    const createdAtTime = props.createdAt.toLocaleTimeString();
+
+    const tranDate = new Date(props.createdAt).toLocaleTimeString("en-US");
+    
     return (
         <div className='account-history-main'>
             <div className="transaction">
@@ -12,7 +13,15 @@ const AccountHistory = (props) => {
             </div>
             <div className="createdAt">
                 <p>On: </p>
-                <p className='value'> {createdAtDate} {createdAtTime} </p>
+                <p className='value'> 
+                    {new Date(props.createdAt).toLocaleDateString()}
+                </p>
+            </div>
+            <div className="createdAt">
+                <p>Time: </p>
+                <p className='value'> 
+                    {tranDate.split(":")[0] + ":" + tranDate.split(":")[1] +" "+ tranDate.split(":")[2].split(" ")[1]}
+                </p>
             </div>
             <div className="amount">
                 <p>Amount: </p>

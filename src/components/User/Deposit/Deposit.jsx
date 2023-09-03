@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import './deposit.css';
+import { deposit } from '../../../api/fdApi';
+import jwtPayloadDecoder from 'jwt-payload-decoder';
 // import CardChipImage from '../../../images/credit-card.png';
 // import CardRupayImage from '../../../images/Rupay.png';
 
 const Deposit = () => {
+
+  // user
+  const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
 
   const [ amount, setAmount ] = useState('');
   const [ showAlert, setShowAlert ] = useState(false);
@@ -13,7 +18,8 @@ const Deposit = () => {
       setShowAlert(true);
     }
     else{
-      alert("Success");
+      setShowAlert(false);
+      deposit({userId: user.userInfo._id, deposit: amount}, setAmount);
     }
   }
 
@@ -151,6 +157,7 @@ const Deposit = () => {
               inputMode='numeric'
               name='amount'
               value={amount}
+              autoComplete='off'
               onChange={handleChange}
             />
           </div>

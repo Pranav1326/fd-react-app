@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
-import './withdraw.css'
+import React, { useState } from 'react';
+import jwtPayloadDecoder from 'jwt-payload-decoder';
+import './withdraw.css';
+import { withdraw } from '../../../api/fdApi';
 
 const Withdraw = () => {
+
+  // user
+  const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
 
   const [ amount, setAmount ] = useState('');
   const [ showAlert, setShowAlert ] = useState(false);
@@ -11,7 +16,8 @@ const Withdraw = () => {
       setShowAlert(true);
     }
     else{
-      alert("Success");
+      setShowAlert(false);
+      withdraw({userId: user.userInfo._id, withdraw: amount}, setAmount);
     }
   }
 

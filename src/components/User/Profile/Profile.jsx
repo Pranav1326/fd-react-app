@@ -23,7 +23,6 @@ const Profile = () => {
 
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
-  console.log(user);
 
   const renderAccountHistory = accountHistory && accountHistory.map(transaction => {
     return (
