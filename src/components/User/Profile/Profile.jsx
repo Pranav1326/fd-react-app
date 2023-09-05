@@ -11,11 +11,14 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../../../api/url';
+import { getWalletDetails } from '../../../api/fdApi';
 
 const Profile = () => {
+
+  const [ wallet, setWallet ] = useState(null);
   const [fdBtn, setfdBtn] = useState(false);
   const [accountBtn, setAccountBtn] = useState(false);
-  const [btn, setBtn] = useState("fd");
+  const [btn, setBtn] = useState("createfd");
   const [accountHistory, setAccountHistory] = useState(null);
 
   const dispatch = useDispatch();
@@ -31,8 +34,6 @@ const Profile = () => {
         transaction={transaction.transaction}
         createdAt={new Date(transaction.createdAt)}
         amount={transaction.amount}
-        transactionMehtod={"card"}
-        cardNo={"XXXX"}
       />
     );
   });
@@ -47,6 +48,7 @@ const Profile = () => {
       }
     }
     fetchAccountHistory();
+    getWalletDetails({ userId: user.userInfo._id}, setWallet);
     // eslint-disable-next-line
   }, []);
 
@@ -119,14 +121,14 @@ const Profile = () => {
     <div className='profile-main'>
       <div className="profilecard-btns">
         {/* Profile Details Card */}
-        <ProfileCard
+        { wallet && <ProfileCard
           username={user.userInfo.username}
-          balance={user.walletDetails.money}
+          balance={wallet.money}
           totalfds={user.FdDetails.length}
           runningfds={user.FdDetails}
           maturedfds={user.FdDetails}
           brokenfds={user.FdDetails}
-        />
+        /> }
         {/* Buttons */}
         <div className="account-btns">
           <button

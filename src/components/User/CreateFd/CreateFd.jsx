@@ -1,38 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './createfd.css';
 
 const CreateFd = () => {
+
+  const [ radio, setRadio ] = useState(null);
+  
+  const createRadioButtons = [3,6,9,12,24,48,60].map((rate, i) => {
+    return(
+       <button 
+        key={i} 
+        className={radio === rate ? "rate-btn-active" : "rate-btn"}
+        onClick={() => {
+          setRadio(rate)
+        }}
+        >
+        {rate} Months
+      </button>
+    );
+  });
+  
   return (
     <div className='create-fd-main'>
       <div className="create-fd-div">
         <div className="duration-div">
           <span className='title'>Duration</span>
           <div className="duration-sub-div">
-            <div className="duration-month">
-              <input type="radio" name="duration" /> <span>3 Months</span>
-            </div>
-            <div className="duration-month">
-              <input type="radio" name="duration" /><span>6 Months</span>
-            </div>
-            <div className="duration-month">
-              <input type="radio" name="duration" /><span>9 Months</span>
-            </div>
-            <div className="duration-month">
-              <input type="radio" name="duration" /><span>12 Months</span>
-            </div>
-            <div className="duration-month">
-              <input type="radio" name="duration" /><span>15 Months</span>
-            </div>
-            <div className="duration-month">
-              <input type="radio" name="duration" /><span>18 Months</span>
-            </div>
-            <div className="duration-month">
-              <input type="radio" name="duration" /><span>20 Months</span>  
-            </div>
-            <div className="duration-month">
-              <input type="radio" name="duration" /><span>24 Months</span>  
-            </div>
-          {/* <p>Months</p> */}
+            {createRadioButtons}
           </div>
         </div>
         <div className="rate-div">
@@ -46,7 +39,7 @@ const CreateFd = () => {
             name="amount" 
             className='amount-value'
             minLength='1'
-            maxLength='8'
+            maxLength='7'
             onInput={(e) =>  {
               e.target.value = e.target.value.replace(/[^0-9]/g, '')
             }} 
