@@ -69,3 +69,41 @@ export const withdraw = async (data, setAmount) => {
         error && alert(error?.response?.data?.message);
     }
 }
+
+// Fetch All rates for a user
+export const getUserRates = async (data, setRates) => {
+    try {
+        const res = await axios.get(`${baseUrl}/rate/${data.user}`);
+        setRates(res.data);
+    } catch (error) {
+        console.log(error?.response);
+        error && alert(error?.response?.data?.message);
+    }
+}
+
+// User Details
+export const getUser = async (data, setUserDetails) => {
+    try {
+        const res = await axios.get(`${baseUrl}/user/${data.userId}`, data);
+        setUserDetails(res.data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// User Update
+export const updateUser = async (data, navigate) => {
+    const reqOptions = {
+        url: `${baseUrl}/user/update/${data.userId}`,
+        method: "PUT",
+        headers: headersList,
+        data: data,
+    }
+    try {
+        const res = await axios.request(reqOptions);
+        console.log(res.data);
+        navigate('/profile')
+    } catch (error) {
+        console.log(error);
+    }
+}

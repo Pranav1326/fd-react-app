@@ -18,7 +18,7 @@ const Profile = () => {
   const [ wallet, setWallet ] = useState(null);
   const [fdBtn, setfdBtn] = useState(false);
   const [accountBtn, setAccountBtn] = useState(false);
-  const [btn, setBtn] = useState("createfd");
+  const [btn, setBtn] = useState("profile");
   const [accountHistory, setAccountHistory] = useState(null);
 
   const dispatch = useDispatch();
@@ -93,10 +93,11 @@ const Profile = () => {
       case "profile":
         return (
           <ProfileDetails
+            userId={user.userInfo._id}
             username={user.userInfo.username}
             email={user.userInfo.email}
-            account={"Student"}
-            work={"-"}
+            account={user.userInfo.account}
+            work={user.userInfo.work}
             totalfd={user.userInfo.Fd.length}
             FdDetails={user.FdDetails}
             availableBalance={user.walletDetails.money}

@@ -57,6 +57,7 @@ span.title {
     display: flex;
     width: 36vw;
     flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .rate-btn{

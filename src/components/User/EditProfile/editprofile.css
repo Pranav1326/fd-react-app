@@ -28,6 +28,7 @@
     align-items: center;
     justify-content: space-between;
     margin: 1rem 0;
+    padding: 0;
 }
 
 .edit-profile-div>div span{
@@ -66,4 +67,37 @@
     cursor: pointer;
     color: var(--main-dark-color);
     background-color: var(--main-bg-color);
+}
+
+.edit-profile-delete{
+    width: 90vw;
+    margin-bottom: 2rem;
+    background-color: var(--font-white-color);
+    border-radius: var(--border-outside-width);
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-profile-delete p{
+    padding: 0 2rem 1rem 2rem;
+    color: var(--main-dark-color);
+}
+
+.edit-profile-delete-profile-btn{
+    font-size: 1.5rem;
+    width: fit-content;
+    padding: 1rem;
+    border-radius: var(--border-outside-width);
+    border: none;
+    background-color: var(--danger-color);
+    color: var(--font-white-color);
+    font-weight: 600;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.edit-profile-delete-profile-btn:hover{
+    cursor: pointer;
+    background-color: var(--danger-color-lite);
 }
