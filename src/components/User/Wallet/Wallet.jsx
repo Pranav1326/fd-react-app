@@ -51,6 +51,7 @@ const Wallet = () => {
   useEffect(() => {
     getTransactions({ userId: user.userInfo._id }, setTransactions);
     getWalletDetails({ userId: user.userInfo._id}, setWallet);
+    // eslint-disable-next-line
   }, [btn]);
   
   return (

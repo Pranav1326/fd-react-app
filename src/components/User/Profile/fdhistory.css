@@ -2,6 +2,7 @@
     /* width: calc(60vw - 1px); */
     height: fit-content;
     margin: 0 0 0.8rem;
+    padding-bottom: 1.5rem;
     background-color: var(--font-white-color);
     border-radius: var(--border-outside-width);
     padding: 0.2rem 2rem;
@@ -33,15 +34,27 @@
     text-transform: capitalize;
 }
 
+.dates,
+.duration-n-rate,
+.value-n-totalvalue
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 8rem;
+}
+
 .createdAt,
 .amount,
 .transaction-mehtod,
 .card-no,
 .interest,
 .duration{
+    width: inherit;
     margin: 0;
     font-size: 1.4rem;
     display: flex;
+    text-align: left;
 }
 
 .createdAt p,

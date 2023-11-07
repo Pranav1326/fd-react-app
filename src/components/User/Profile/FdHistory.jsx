@@ -15,29 +15,35 @@ const FdHistory = (props) => {
                 <p>Transaction: </p>
                 <p className='value'> {props.transaction} </p>
             </div>
-            <div className="createdAt">
-                <p>Issue Date: </p>
-                <p className='value'> {new Date(props.createdAt).toLocaleDateString()} </p>
+            <div className="dates">
+                <div className="createdAt">
+                    <p>Issue Date: </p>
+                    <p className='value'> {new Date(props.createdAt).toLocaleDateString()} </p>
+                </div>
+                <div className="createdAt">
+                    <p>Mature Date: </p>
+                    <p className='value'> {new Date(props.matureDate).toLocaleDateString()} </p>
+                </div>
             </div>
-            <div className="createdAt">
-                <p>Mature Date: </p>
-                <p className='value'> {new Date(props.matureDate).toLocaleDateString()} </p>
+            <div className="duration-n-rate">
+                <div className="duration">
+                    <p>Duration: </p>
+                    <p className='value'> {props.months} Months </p>
+                </div>
+                <div className="amount">
+                    <p>Interest: </p>
+                    <p className='value'> {props.interest}% </p>
+                </div>
             </div>
-            <div className="duration">
-                <p>Duration: </p>
-                <p className='value'> {props.months} Months </p>
-            </div>
-            <div className="amount">
-                <p>Amount: </p>
-                <p className='value'> {props.amount} ₹ </p>
-            </div>
-            <div className="amount">
-                <p>Interest: </p>
-                <p className='value'> {props.interest}% </p>
-            </div>
-            <div className="amount">
-                <p>Maturity Value: </p>
-                <p className='value'> {Math.round(props.maturityValue)} ₹ </p>
+            <div className="value-n-totalvalue">
+                <div className="amount">
+                    <p>Amount: </p>
+                    <p className='value'> {props.amount} ₹ </p>
+                </div>
+                <div className="amount">
+                    <p>Maturity Value: </p>
+                    <p className='value'> {Math.round(props.maturityValue)} ₹ </p>
+                </div>
             </div>
         </div>
     );
