@@ -1,13 +1,16 @@
 .current-rates-main{
     width: calc(64vw + 0.3rem);
-    height: 82vh;
+    /* height: 82vh; */
     margin-bottom: 2rem;
-    overflow: scroll;
 }
 
-.current-rates-div{
+/* .current-rates-div{
     height: 82vh;
     overflow: scroll;
+} */
+
+.heading{
+    width: auto;
 }
 
 table{
@@ -42,10 +45,36 @@ table .duration{
     text-align: center;
     background-color: var(--medium-color);
     color: var(--font-white-color);
-    padding: 1.2rem 2rem;
+    padding: 1.34rem 2rem;
 }
 
 table td{
     background-color: var(--font-white-color);
+    color: var(--main-dark-color);
+}
+
+.actions{
+    display: flex;
+}
+
+table .edit-btn-box{
+    text-align: center;
+    background-color: var(--medium-color);
+    padding: 1.2rem 2rem;
+    width: 100%;
+}
+
+table .edit-btn-box button{
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    width: inherit;
+    height: inherit;
+    color: var(--font-white-color);
+}
+
+table .edit-btn-box button:hover{
+    cursor: pointer;
     color: var(--main-dark-color);
 }

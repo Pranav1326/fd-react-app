@@ -85,6 +85,10 @@ const CurrentRates = (props) => {
                     <td className='duration'>{rate.months} Months</td>
                     <td>{rate.interestRate}</td>
                     <td>{rate.createdBy}</td>
+                    <tr className='actions'>
+                        <td className='edit-btn-box'><button>Edit</button></td>
+                        <td className='edit-btn-box'><button>Delete</button></td>
+                    </tr>
                 </tr>
             );
         }
@@ -95,12 +99,13 @@ const CurrentRates = (props) => {
         <table>
             <thead>
                 <tr>
-                    <th colSpan={3}>{props.for} {props.for === "senior" ? "Citizens" : ""}</th>
+                    <th colSpan={4}>{props.for} {props.for === "senior" ? "Citizens" : ""}</th>
                 </tr>
                 <tr>
                     <th>Duration</th>
                     <th>Intereset</th>
                     <th>Created By Admin</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>

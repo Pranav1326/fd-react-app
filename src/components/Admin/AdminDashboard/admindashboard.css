@@ -9,14 +9,9 @@
 
 .details-for-admin{
     margin-top: 1rem;
+    width: inherit;
 }
 
 .fd-history{
-    height: 100vh;
     margin-bottom: 2rem;
-    overflow: scroll;
-}
-
-.fd-history:last-child{
-    margin-bottom: 0;
 }
