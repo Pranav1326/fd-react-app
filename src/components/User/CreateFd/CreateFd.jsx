@@ -8,34 +8,54 @@ const CreateFd = () => {
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
   // console.log(user);
-  
-  const [ rates, setRates ] = useState(null);
-  const [ radio, setRadio ] = useState();
-  
+
+  const [rates, setRates] = useState(null);
+  const [radio, setRadio] = useState();
+  const [amount, setAmount] = useState("");
+
   const createRadioButtons = rates && rates.map((rate, i) => {
-    return(
-       <button 
-        key={i} 
+    return (
+      <button
+        key={i}
         className={radio === rate.months ? "rate-btn-active" : "rate-btn"}
         onClick={() => {
           setRadio(rate.months)
         }}
-        >
+      >
         {rate.months} Months
       </button>
     );
   });
-  
+
   const renderRate = rates && rates.find((rate) => {
     return radio === rate.months;
   });
-  // rates && console.log(renderRate.interestRate);
+
+  const handleCreateFd = () => {
+    if ((amount === 0 || amount === "") && (renderRate === undefined)) {
+      alert("Please select the data!");
+    }
+    // if (amount === 0 || amount === "") {
+    //   alert("Please enter the amount!");
+    // }
+    else {
+      const data = {
+        user: {
+          userId: user.userInfo._id,
+          username: user.userInfo.username
+        },
+        amount: Number(amount),
+        interest: renderRate?.interestRate,
+        months: radio
+      };
+      console.log(data);
+    }
+  }
 
   useEffect(() => {
-    getUserRates({user: "normal"}, setRates);
-    rates && setRadio(rates[0].months);
+    getUserRates({ user: "normal" }, setRates);
   }, []);
-  
+
   return (
     <div className='create-fd-main'>
       <div className="create-fd-div">
@@ -47,23 +67,27 @@ const CreateFd = () => {
         </div>
         <div className="rate-div">
           <span className='title'>Rate</span>
-          {/* <p className='rate-value'>{ rates && (renderRate.interestRate ? renderRate.interestRate : 0)}%</p> */}
+          <p className='rate-value'>{renderRate ? renderRate.interestRate : 0}%</p>
         </div>
         <div className="amount-div">
           <span className='title'>Amount</span>
-          <input 
-            type="text" 
-            name="amount" 
+          <input
+            type="text"
+            name="amount"
             className='amount-value'
             minLength='1'
             maxLength='7'
-            onInput={(e) =>  {
+            autoComplete='off'
+            required
+            onInput={(e) => {
               e.target.value = e.target.value.replace(/[^0-9]/g, '')
-            }} 
+            }}
+            value={amount}
+            onChange={e => setAmount(e.target.value)}
           />
           <p className="rupee-symbol">₹</p>
         </div>
-        <button className='create-fd-btn'>Create FD</button>
+        <button className='create-fd-btn' onClick={handleCreateFd}>Create FD</button>
       </div>
     </div>
   );

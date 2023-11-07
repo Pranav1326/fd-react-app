@@ -2,12 +2,22 @@ import React, { useState } from 'react';
 import jwtPayloadDecoder from 'jwt-payload-decoder';
 import './withdraw.css';
 import { withdraw } from '../../../api/fdApi';
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css';
 
 const Withdraw = () => {
 
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
 
+  const [ cardDetails, setCardDetails ] = useState({
+    cvc: "",
+    expiry: "",
+    focus: "",
+    name: "",
+    number: "",
+  });
+  
   const [ amount, setAmount ] = useState('');
   const [ showAlert, setShowAlert ] = useState(false);
 
@@ -22,79 +32,90 @@ const Withdraw = () => {
   }
 
   const handleChange = e => {
-    setAmount(e.target.value);
+    const { name, value } = e.target;
+    let updatedValue = value;
+
+    // Input validation
+    if (name === 'number' || name === 'cvc') {
+      updatedValue = value.replace(/[^0-9]/g, '');
+    } else if (name === 'expiry') {
+      // eslint-disable-next-line
+      updatedValue = value.replace(/[^0-9/]/g, '');
+    }
+    
+    setCardDetails(preValue => ({ ...preValue, [name]: value }));
   }
 
   return (
     <div className='deposit-main'>
       <h1 className='heading-main'> Withdraw Cash </h1>
       <div className="box-card-details">
-        {/* <div className="card"></div> */}
+        {/* Card */}
+        <Cards
+          cvc={cardDetails.cvc}
+          expiry={cardDetails.expiry}
+          focused={cardDetails.focus}
+          name={cardDetails.name}
+          number={cardDetails.number}
+        />
         <div className="details">
-          {/* <h1>Card Details</h1> */}
+          <h1>Card Details</h1>
           {/* Name on Card */}
-          {/* <div className="card-name">
+          <div className="card-name">
             <span>Name on Card</span>
-            <input type="text" className='card-input-value' name='cardName' />
-          </div> */}
+            <input type="text" className='card-input-value' maxLength={"23"} value={cardDetails.name} onChange={handleChange} name='name' required/>
+          </div>
           {/* Card Number */}
-          {/* <div className="card-number">
+          <div className="card-number">
             <span>Card Number</span>
-            <input 
-              type="number" 
-              className='card-input-value' 
-              inputMode='numeric' 
-              name='cardNumber'
-              onInput={(e) =>  {
-                e.target.value = e.target.value.replace(/^(?:4[0-9]{12}(?:[0-9]{3})?)$/);
-              }}
+            <input
+              type="tel"
+              className='card-input-value'
+              inputMode='numeric'
+              name='number'
+              maxLength="16"
+              minLength="16"
+              value={cardDetails.number}
+              onChange={handleChange}
             />
-          </div> */}
+          </div>
           <div className="card-date-cvv">
             {/* Card Valid Date */}
-            {/* <div className="card-date">
+            <div className="card-date">
               <span>Valid Through</span>
               <div className="date-inputs">
                 <input 
                   type="text" 
-                  className='card-input-value-date-1' 
-                  inputMode='numeric' 
-                  name='cardNumber' 
-                  onInput={(e) =>  {
-                    e.target.value = e.target.value.replace(/[^0-1]/g,'')
-                  }}
-                  maxLength='2'
-                  minLength='2'
-                />
-                /
-                <input 
-                  type="text" 
                   className='card-input-value-date-2' 
-                  inputMode='numeric' 
-                  name='cardNumber' 
+                  inputMode='text' 
+                  name='expiry'
+                  value={cardDetails.date2}
+                  onChange={handleChange}
                   onInput={(e) =>  {
                     e.target.value = e.target.value.replace(/[^0-9]/g, '')
                   }}
-                  maxLength='2'
+                  maxLength='4'
                   minLength='2'
                 />
               </div>
-            </div> */}
+            </div>
             {/* CVV */}
-            {/* <div className="card-cvv">
+            <div className="card-cvv">
               <span>CVV</span>
-              <input 
-                type="text" 
-                className='card-input-value' 
-                inputMode='numeric' 
-                name='cardNumber'
-                onInput={(e) =>  {
+              <input
+                type="text"
+                className='card-input-value'
+                inputMode='numeric'
+                name='cvc'
+                value={cardDetails.cvc}
+                onChange={handleChange}
+                onInput={(e) => {
                   e.target.value = e.target.value.replace(/[^0-9]/g, '')
                 }}
                 maxLength='3'
                 minLength='3'
               />
-            </div> */}
+            </div>
           </div>
           {/* Deposit Amount */}
           <div className="deposit-amount">
@@ -103,8 +124,9 @@ const Withdraw = () => {
               type="number" 
               className='card-input-value' 
               name='amount'
+              autoComplete='off'
               value={amount}
-              onChange={handleChange}
+              onChange={e => setAmount(e.target.value)}
               maxLength='7'
               minLength='3'
             />
