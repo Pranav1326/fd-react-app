@@ -20,8 +20,6 @@ const Profile = () => {
   const [accountBtn, setAccountBtn] = useState(false);
   const [btn, setBtn] = useState("createfd");
   const [accountHistory, setAccountHistory] = useState(null);
-  const [ isLoading, setIsLoading ] = useState(false);
-  const [ isLoadingWallet, setIsLoadingWallet ] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,17 +40,15 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchAccountHistory = async () => {
-      setIsLoading(true);
       try {
         const res = await axios.post(`${baseUrl}/transaction`, { userId: user.userInfo._id });
         setAccountHistory(res.data);
-        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
     }
     fetchAccountHistory();
-    getWalletDetails({ userId: user.userInfo._id}, setWallet, setIsLoadingWallet);
+    getWalletDetails({ userId: user.userInfo._id}, setWallet);
     // eslint-disable-next-line
   }, []);
 
@@ -126,9 +122,9 @@ const Profile = () => {
     <div className='profile-main'>
       <div className="profilecard-btns">
         {/* Profile Details Card */}
-        { isLoading ? <h1>Loading...</h1> : <ProfileCard
+        { wallet && <ProfileCard
           username={user.userInfo.username}
-          // balance={ isLoadingWallet ? "Loading..." : wallet.money}
+          balance={wallet.money}
           totalfds={user.FdDetails.length}
           runningfds={user.FdDetails}
           maturedfds={user.FdDetails}
