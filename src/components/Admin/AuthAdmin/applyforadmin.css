@@ -1,0 +1,54 @@
+.apply-for-admin{
+    height: 72.2vh;
+    width: 78vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-apply-for-admin{
+    padding: 0 3rem 2rem;
+    border-radius: var(--border-outside-width);
+    background-color: var(--medium-color);
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+}
+
+.apply-for-admin-heading{
+    color: var(--font-white-color);
+    text-align: center;
+}
+
+.apply-for-admin-email,
+.apply-for-admin-username{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.apply-for-admin-email span,
+.apply-for-admin-username span{
+    color: var(--font-white-color);
+    margin-bottom: 0.2rem;
+    font-weight: 700;
+}
+
+.apply-for-admin-email-input,
+.apply-for-admin-username-input{
+    margin: 0;
+    width: -webkit-fill-available;
+    font-size: 1.4rem;
+    padding: 0.7rem;
+    border: none;
+    border-radius: var(--border-inside-width);
+    background-color: var(--font-white-color);
+    color: var(--main-dark-color);
+    font-weight: 600;
+}
+
+.apply-for-admin-btn{
+    color: var(--medium-color);;
+}

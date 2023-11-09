@@ -3,10 +3,12 @@ import Otp from '../Otp/Otp';
 import './signup.css';
 import { register } from '../../api/userApi';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = ({setUserExists}) => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const error = useSelector(state => state.userReducer.error);
 
@@ -29,9 +31,6 @@ const Signup = ({setUserExists}) => {
     if(error){
       alert(error);
     }
-    else{
-
-    }
   }
   
   if(otp){
@@ -50,6 +49,7 @@ const Signup = ({setUserExists}) => {
           <h1>Welcome Back!</h1>
           <p>To keep connected with us please login with your personal info.</p>
           <button className='signin-btn-signup' onClick={() => setUserExists(true)}>Sign In</button>
+          <button className='signin-btn-signup' onClick={() => navigate('/applyforadmin')}>Apply for Admin</button>
         </div>
         <div className="register-box">
           <form action="" method="post" onSubmit={handleSubmit}>

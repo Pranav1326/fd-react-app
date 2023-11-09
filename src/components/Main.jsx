@@ -9,6 +9,7 @@ import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
 import Auth from "./Auth/Auth";
 import AdminDashboard from "./Admin/AdminDashboard/AdminDashboard";
+import ApplyForAdmin from "./Admin/AuthAdmin/ApplyForAdmin";
 import { useSelector } from "react-redux";
 
 const Main = () => {
@@ -22,6 +23,7 @@ const Main = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/applyforadmin" element={<ApplyForAdmin />} />
           <Route path="/profile" element={ user ? <Profile /> : <Auth /> } />
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/wallet" element={user ? <Wallet /> : <Auth /> } />
