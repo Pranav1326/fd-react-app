@@ -23,10 +23,10 @@ export const userLogin = async (data, dispatch, navigate) => {
 export const adminLogin = async (data, dispatch, navigate) => {
     dispatch(LOGIN_START());
     try {
-        const res = await axios.post(`${baseUrl}/user/login`, data);
+        const res = await axios.post(`${baseUrl}/admin/signin`, data);
         dispatch(LOGIN_SUCCESS(res.data));
         sessionStorage.setItem("fdt", JSON.stringify(res.data.token));
-        navigate('/profile');
+        navigate('/admindashboard');
     } catch (error) {
         console.log(error);
         error && alert(error.response.data);

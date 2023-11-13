@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './signin.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userLogin } from '../../api/userApi';
+import { adminLogin, userLogin } from '../../api/userApi';
 
 const Signin = ({setUserExists}) => {
 
@@ -20,9 +20,15 @@ const Signin = ({setUserExists}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const ifAdmin = data.username.split('.')[0];
-    userLogin(data, dispatch, navigate);
-    if(ifAdmin === "admin")
+    if(ifAdmin === "admin"){
       alert(ifAdmin);
+      console.log(data);
+      adminLogin({username: "Pranav", password: "123"}, dispatch, navigate);
+    }
+    else{
+      console.log(data);
+      userLogin(data, dispatch, navigate);
+    }
   }
   
   // Input onChange event handling
