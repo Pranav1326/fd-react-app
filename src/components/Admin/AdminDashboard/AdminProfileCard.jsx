@@ -2,6 +2,9 @@ import React from 'react';
 import '../../User/Profile/profilecard.css'
 
 const AdminProfileCard = (props) => {
+
+
+    
     return (
         <div className='profile-card-main'>
             <div className="profile-pic">
@@ -15,7 +18,7 @@ const AdminProfileCard = (props) => {
                 </div>
                 <div className="joined-date">
                     <p>
-                        Joined on: {new Date().toDateString()}
+                        Joined on: {new Date(props.joinedDate).toDateString()}
                     </p>
                 </div>
                 <div className="balance">
