@@ -2,6 +2,7 @@ import React from 'react';
 import './fdhistory.css'
 
 const FdHistory = (props) => {
+    
     return (
         <div className='fd-history-main'>
             {
@@ -12,8 +13,8 @@ const FdHistory = (props) => {
                 </div>
             }
             <div className="transaction">
-                <p>Transaction: </p>
-                <p className='value'> {props.transaction} </p>
+                <p>Status: </p>
+                <p className='value'> {(props.transaction)} </p>
             </div>
             <div className="dates">
                 <div className="createdAt">

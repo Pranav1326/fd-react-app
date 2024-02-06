@@ -18,8 +18,9 @@ const AdminDashboard = () => {
     
     const [ fdBtn, setfdBtn ] = useState(false);
     const [ accountBtn, setAccountBtn ] = useState(false);
-    const [ btn, setBtn ] = useState("currentRate");
+    const [ btn, setBtn ] = useState("fd");
     const [ centerDetails, setCenterDetails ] = useState(null);
+    const [ allFdDetails, setAllFdDetails] = useState(null);
     
     const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
     
@@ -28,30 +29,7 @@ const AdminDashboard = () => {
             return(
                 <div className="fd-history">
                     <h1 className='heading'> FD History </h1>
-                    <FdHistory
-                        user="Raj"
-                        transaction={"created fd"}
-                        createdAt={new Date()}
-                        amount={5000}
-                        interest={3}
-                        months={6}
-                    />
-                    <FdHistory
-                        user="Preyansh"
-                        transaction={"matured fd"}
-                        createdAt={new Date()}
-                        amount={5000}
-                        interest={2.4}
-                        months={3}
-                    />
-                    <FdHistory
-                        user="Rishi"
-                        transaction={"created fd"}
-                        createdAt={new Date()}
-                        amount={10000}
-                        interest={4.7}
-                        months={18}
-                    />
+                    {renderAllFds}
                 </div>
             );
         }
@@ -81,9 +59,25 @@ const AdminDashboard = () => {
           return;
         }
     }
+
+    const renderAllFds = allFdDetails && allFdDetails.map(fd => {
+            return (
+                <FdHistory
+                    key = {fd._id}
+                    user = {fd.user.username}
+                    transaction={fd.status}
+                    createdAt={fd.createdAt}
+                    matureDate={fd.matureDate}
+                    amount={fd.amount}
+                    maturityValue={fd.maturityValue}
+                    interest={fd.interest}
+                    months={fd.months}
+                />
+            );
+    });
     
     useEffect(() => {
-        const getcenterdetails = async (data) => {
+        const getcenterdetails = async () => {
             const token = JSON.parse(sessionStorage.getItem('fdt'));
             const headersList = {
               "Accept": "*/*",
@@ -103,6 +97,26 @@ const AdminDashboard = () => {
             }
         }
         getcenterdetails();
+        const getFdDetails = async () => {
+            const token = JSON.parse(sessionStorage.getItem('fdt'));
+            const headersList = {
+              "Accept": "*/*",
+              "Authorization": `Bearer ${token}`,
+              "Content-Type": "application/json" 
+            }
+            const reqOptions = {
+                url: `${baseUrl}/admin/getallfds`,
+                method: "GET",
+                headers: headersList,
+            }
+            try {
+                const res = await axios.request(reqOptions);
+                setAllFdDetails(res.data);
+            } catch (error) {
+              console.log(error?.response?.data?.message);
+            }
+        }
+        getFdDetails();
     }, []);
     
     return(
