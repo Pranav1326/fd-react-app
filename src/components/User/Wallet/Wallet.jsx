@@ -30,7 +30,7 @@ const Wallet = () => {
           <div className="account-history">
             <h1 className='heading'> Transaction History </h1>
             {
-              transactions && transactions.map(tran => {
+              transactions && transactions.reverse().map(tran => {
                 return(
                   <AccountHistory
                     key={tran._id}

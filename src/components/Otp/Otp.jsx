@@ -29,8 +29,8 @@ const Otp = (props) => {
                         autoComplete='off' 
                         onChange={e => setOtp(e.target.value)}
                         value={otp}
-                        minLength='4'
-                        maxLength='4'
+                        minLength='6'
+                        maxLength='6'
                         onInput={(e) =>  {
                             e.target.value = e.target.value.replace(/[^0-9]/g, '')
                         }} 

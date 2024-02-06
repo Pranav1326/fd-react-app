@@ -27,7 +27,7 @@ const Profile = () => {
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
 
-  const renderAccountHistory = accountHistory && accountHistory.map(transaction => {
+  const renderAccountHistory = accountHistory && accountHistory.reverse().map(transaction => {
     return (
       <AccountHistory
         key={transaction._id}
@@ -52,7 +52,7 @@ const Profile = () => {
     // eslint-disable-next-line
   }, []);
 
-  const fdHistory = user.FdDetails.map(fd => {
+  const fdHistory = user.FdDetails.reverse().map(fd => {
     return (
       <FdHistory
         key={fd._id}

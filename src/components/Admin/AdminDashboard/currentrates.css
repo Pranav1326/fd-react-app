@@ -46,6 +46,7 @@ table .duration{
     background-color: var(--medium-color);
     color: var(--font-white-color);
     padding: 1.34rem 2rem;
+    justify-content: center;
 }
 
 table td{
@@ -61,7 +62,6 @@ table .edit-btn-box{
     text-align: center;
     background-color: var(--medium-color);
     padding: 1.2rem 2rem;
-    width: 100%;
 }
 
 table .edit-btn-box button{

@@ -8,73 +8,73 @@ const CurrentRates = (props) => {
             interestRate: 4.5,
             months: 3,
             for: "student",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 4,
             months: 3,
             for: "normal",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 4.6,
             months: 3,
             for: "senior",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 5,
             months: 6,
             for: "student",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 4.7,
             months: 6,
             for: "normal",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 5,
             months: 6,
             for: "senior",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 5.5,
             months: 9,
             for: "student",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 5.2,
             months: 9,
             for: "normal",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 5.6,
             months: 9,
             for: "senior",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 6,
             months: 12,
             for: "student",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 5.9,
             months: 12,
             for: "normal",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
         {
             interestRate: 6.2,
             months: 12,
             for: "senior",
-            createdBy: "Pranav"
+            createdBy: "admin.Pranav"
         },
     ];
 
@@ -85,10 +85,10 @@ const CurrentRates = (props) => {
                     <td className='duration'>{rate.months} Months</td>
                     <td>{rate.interestRate}</td>
                     <td>{rate.createdBy}</td>
-                    <tr className='actions'>
+                    <td className='edit-btn-box'><button>Delete</button></td>
+                    {/* <tr className='actions'>
                         <td className='edit-btn-box'><button>Edit</button></td>
-                        <td className='edit-btn-box'><button>Delete</button></td>
-                    </tr>
+                    </tr> */}
                 </tr>
             );
         }
