@@ -10,7 +10,6 @@ const headersList = {
 
 // User Wallet
 export const getWalletDetails = async (data, setWallet) => {
-    // setIsLoadingWallet(true);
     const reqOptions = {
         url: `${baseUrl}/wallet/${data.userId}`,
         method: "GET",
@@ -20,9 +19,8 @@ export const getWalletDetails = async (data, setWallet) => {
     try {
         const res = await axios.request(reqOptions);
         setWallet(res.data);
-        // setIsLoadingWallet(false);
     } catch (error) {
-        error && alert(error.response.data);
+        error && alert(error?.response?.data?.message);
     }
 }
 
@@ -32,7 +30,7 @@ export const getTransactions = async (data, setTransactions) => {
         const res = await axios.post(`${baseUrl}/transaction/`, data);
         setTransactions(res.data);
     } catch (error) {
-        error && alert(error.response.data);
+        error && alert(error?.response?.data);
     }
 }
 
@@ -103,7 +101,7 @@ export const updateUser = async (data, navigate) => {
     }
     try {
         const res = await axios.request(reqOptions);
-        console.log(res.data);
+        alert(res?.data);
         navigate('/profile')
     } catch (error) {
         console.log(error);

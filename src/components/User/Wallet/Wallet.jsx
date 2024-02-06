@@ -5,7 +5,9 @@ import ProfileCard from '../Profile/ProfileCard';
 import Withdraw from '../Withdraw/Withdraw';
 import './wallet.css';
 import jwtPayloadDecoder from 'jwt-payload-decoder';
-import { getTransactions, getWalletDetails } from '../../../api/fdApi';
+import { getTransactions } from '../../../api/fdApi';
+import { baseUrl } from '../../../api/url';
+import axios from 'axios';
 
 const Wallet = () => {
 
@@ -50,6 +52,26 @@ const Wallet = () => {
   
   useEffect(() => {
     getTransactions({ userId: user.userInfo._id }, setTransactions);
+    const getWalletDetails = async (data, setWallet) => {
+      const token = JSON.parse(sessionStorage.getItem('fdt'));
+      const headersList = {
+        "Accept": "*/*",
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json" 
+      }
+      const reqOptions = {
+          url: `${baseUrl}/wallet/${data.userId}`,
+          method: "GET",
+          headers: headersList,
+          data: data,
+      }
+      try {
+          const res = await axios.request(reqOptions);
+          setWallet(res.data);
+      } catch (error) {
+        console.log(error?.response?.data?.message);
+      }
+    }
     getWalletDetails({ userId: user.userInfo._id}, setWallet);
     // eslint-disable-next-line
   }, [btn]);

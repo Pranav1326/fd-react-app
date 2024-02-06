@@ -12,6 +12,7 @@ export const userLogin = async (data, dispatch, navigate) => {
         const res = await axios.post(`${baseUrl}/user/signin`, data);
         dispatch(LOGIN_SUCCESS(res.data));
         sessionStorage.setItem("fdt", JSON.stringify(res.data.token));
+        sessionStorage.setItem("usrt", JSON.stringify(res.data.userType));
         navigate('/profile');
     } catch (error) {
         error && alert(error.response.data);
@@ -26,6 +27,7 @@ export const adminLogin = async (data, dispatch, navigate) => {
         const res = await axios.post(`${baseUrl}/admin/signin`, data);
         dispatch(LOGIN_SUCCESS(res.data));
         sessionStorage.setItem("fdt", JSON.stringify(res.data.token));
+        sessionStorage.setItem("usrt", JSON.stringify(res.data.userType));
         navigate('/admindashboard');
     } catch (error) {
         console.log(error);
@@ -39,6 +41,7 @@ export const logout = async (dispatch, navigate) => {
     try {
         dispatch(LOGOUT());
         sessionStorage.removeItem("fdt");
+        sessionStorage.removeItem("usrt");
         navigate('/');
     } catch (error) {
         console.log(error);
@@ -58,7 +61,7 @@ export const register = async (data, dispatch, setOtp) => {
     }
 }
 
-// Registration
+// Registration with OTP
 export const otpRegister = async (data, dispatch, navigate, setUserExists) => {
     try {
         const res = await axios.post(`${baseUrl}/user/signup/auth`, data);

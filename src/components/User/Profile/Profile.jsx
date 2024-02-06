@@ -11,15 +11,14 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../../../api/url';
-import { getWalletDetails } from '../../../api/fdApi';
 
 const Profile = () => {
 
   const [ wallet, setWallet ] = useState(null);
-  const [fdBtn, setfdBtn] = useState(false);
-  const [accountBtn, setAccountBtn] = useState(false);
-  const [btn, setBtn] = useState("createfd");
-  const [accountHistory, setAccountHistory] = useState(null);
+  const [ fdBtn, setfdBtn ] = useState(false);
+  const [ accountBtn, setAccountBtn ] = useState(false);
+  const [ btn, setBtn ] = useState("createfd");
+  const [ accountHistory, setAccountHistory ] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,6 +47,26 @@ const Profile = () => {
       }
     }
     fetchAccountHistory();
+    const getWalletDetails = async (data, setWallet) => {
+      const token = JSON.parse(sessionStorage.getItem('fdt'));
+      const headersList = {
+        "Accept": "*/*",
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json" 
+      }
+      const reqOptions = {
+          url: `${baseUrl}/wallet/${data.userId}`,
+          method: "GET",
+          headers: headersList,
+          data: data,
+      }
+      try {
+          const res = await axios.request(reqOptions);
+          setWallet(res.data);
+      } catch (error) {
+        console.log(error?.response?.data?.message);
+      }
+    }
     getWalletDetails({ userId: user.userInfo._id}, setWallet);
     // eslint-disable-next-line
   }, []);
@@ -122,14 +141,16 @@ const Profile = () => {
     <div className='profile-main'>
       <div className="profilecard-btns">
         {/* Profile Details Card */}
-        { wallet && <ProfileCard
-          username={user.userInfo.username}
-          balance={wallet.money}
-          totalfds={user.FdDetails.length}
-          runningfds={user.FdDetails}
-          maturedfds={user.FdDetails}
-          brokenfds={user.FdDetails}
-        /> }
+        { wallet &&
+           <ProfileCard
+            username={user.userInfo.username}
+            balance={wallet.money}
+            totalfds={user.FdDetails.length}
+            runningfds={user.FdDetails}
+            maturedfds={user.FdDetails}
+            brokenfds={user.FdDetails}
+          />
+        }
         {/* Buttons */}
         <div className="account-btns">
           <button

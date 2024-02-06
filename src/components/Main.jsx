@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 
 const Main = () => {
 
-  const user = useSelector(state => state.userReducer.token);
+  const user = useSelector(state => state.userReducer);
 
   return (
     <Router>
@@ -24,10 +24,10 @@ const Main = () => {
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/applyforadmin" element={<ApplyForAdmin />} />
-          <Route path="/profile" element={ user ? <Profile /> : <Auth /> } />
+          <Route path="/profile" element={ user.token ? <Profile /> : <Auth /> } />
           <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/wallet" element={user ? <Wallet /> : <Auth /> } />
-          <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/wallet" element={user.token ? <Wallet /> : <Auth /> } />
+          <Route path="/admindashboard" element={user.userType === 1 || user.userType === 0 ? <AdminDashboard /> : <Auth /> } />
         </Routes>
       </div>
       <Footer />

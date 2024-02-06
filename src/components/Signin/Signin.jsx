@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './signin.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { adminLogin, userLogin } from '../../api/userApi';
 
 const Signin = ({setUserExists}) => {
 
-  const error = useSelector(state => state.userReducer.error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,12 +20,9 @@ const Signin = ({setUserExists}) => {
     e.preventDefault();
     const ifAdmin = data.username.split('.')[0];
     if(ifAdmin === "admin"){
-      alert(ifAdmin);
-      console.log(data);
-      adminLogin({username: "Pranav", password: "123"}, dispatch, navigate);
+      adminLogin({username: data.username, password: data.password}, dispatch, navigate);
     }
     else{
-      console.log(data);
       userLogin(data, dispatch, navigate);
     }
   }
@@ -44,10 +40,10 @@ const Signin = ({setUserExists}) => {
           <form action="" method="post" onSubmit={handleSubmit}>
             <h1>Login</h1>
             <div className="username-div">
-              <input type="text" name="username" value={data.username} onChange={handleChange} id="username" placeholder='👤 Username'/>
+              <input type="text" name="username" value={data.username} onChange={handleChange} id="username" placeholder='👤 Username' required/>
             </div>
             <div className="password-div">
-              <input type="password" name="password" value={data.password} onChange={handleChange} id="password" placeholder='🔒 Password'/>
+              <input type="password" name="password" value={data.password} onChange={handleChange} id="password" placeholder='🔒 Password' required/>
             </div>
             <button className='signin-btn' type='submit'>Sign In</button>
           </form>
