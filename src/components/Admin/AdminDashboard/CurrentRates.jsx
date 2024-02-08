@@ -3,88 +3,13 @@ import './currentrates.css';
 
 const CurrentRates = (props) => {
 
-    const rates = [
-        {
-            interestRate: 4.5,
-            months: 3,
-            for: "student",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 4,
-            months: 3,
-            for: "normal",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 4.6,
-            months: 3,
-            for: "senior",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 5,
-            months: 6,
-            for: "student",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 4.7,
-            months: 6,
-            for: "normal",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 5,
-            months: 6,
-            for: "senior",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 5.5,
-            months: 9,
-            for: "student",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 5.2,
-            months: 9,
-            for: "normal",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 5.6,
-            months: 9,
-            for: "senior",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 6,
-            months: 12,
-            for: "student",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 5.9,
-            months: 12,
-            for: "normal",
-            createdBy: "admin.Pranav"
-        },
-        {
-            interestRate: 6.2,
-            months: 12,
-            for: "senior",
-            createdBy: "admin.Pranav"
-        },
-    ];
-
-    const renderRates = rates.map((rate, id) => {
+    const renderRates = props.rates && props.rates.sort((x, y) => x.months-y.months).map(rate => {
         if(rate.for === props.for){
             return(
-                <tr key={id}>
+                <tr key={rate._id}>
                     <td className='duration'>{rate.months} Months</td>
                     <td>{rate.interestRate}</td>
-                    <td>{rate.createdBy}</td>
+                    <td>{rate.createdBy.admin.split(".")[1]}</td>
                     <td className='edit-btn-box'><button>Delete</button></td>
                     {/* <tr className='actions'>
                         <td className='edit-btn-box'><button>Edit</button></td>

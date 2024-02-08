@@ -18,9 +18,10 @@ const AdminDashboard = () => {
     
     const [ fdBtn, setfdBtn ] = useState(false);
     const [ accountBtn, setAccountBtn ] = useState(false);
-    const [ btn, setBtn ] = useState("fd");
+    const [ btn, setBtn ] = useState("currentRate");
     const [ centerDetails, setCenterDetails ] = useState(null);
     const [ allFdDetails, setAllFdDetails] = useState(null);
+    const [ rates, setRates ] = useState(null);
     
     const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
     
@@ -41,9 +42,9 @@ const AdminDashboard = () => {
                 <div className='current-rates-main'>
                     <h1 className='heading'>Current Rates</h1>
                     <div className="current-rates-div">
-                        <CurrentRates for="student" />
-                        <CurrentRates for="normal" />
-                        <CurrentRates for="senior" />
+                        <CurrentRates rates={rates} for={"student"} />
+                        <CurrentRates rates={rates} for={"normal"} />
+                        <CurrentRates rates={rates} for={"senior"} />
                     </div>
                 </div>
             );
@@ -61,19 +62,19 @@ const AdminDashboard = () => {
     }
 
     const renderAllFds = allFdDetails && allFdDetails.map(fd => {
-            return (
-                <FdHistory
-                    key = {fd._id}
-                    user = {fd.user.username}
-                    transaction={fd.status}
-                    createdAt={fd.createdAt}
-                    matureDate={fd.matureDate}
-                    amount={fd.amount}
-                    maturityValue={fd.maturityValue}
-                    interest={fd.interest}
-                    months={fd.months}
-                />
-            );
+        return (
+            <FdHistory
+                key = {fd._id}
+                user = {fd.user.username}
+                transaction={fd.status}
+                createdAt={fd.createdAt}
+                matureDate={fd.matureDate}
+                amount={fd.amount}
+                maturityValue={fd.maturityValue}
+                interest={fd.interest}
+                months={fd.months}
+            />
+        );
     });
     
     useEffect(() => {
@@ -117,6 +118,27 @@ const AdminDashboard = () => {
             }
         }
         getFdDetails();
+        const getRates = async () => {
+            const token = JSON.parse(sessionStorage.getItem('fdt'));
+            const headersList = {
+              "Accept": "*/*",
+              "Authorization": `Bearer ${token}`,
+              "Content-Type": "application/json" 
+            }
+            const reqOptions = {
+                url: `${baseUrl}/rate`,
+                method: "GET",
+                headers: headersList,
+            }
+            try {
+                const res = await axios.request(reqOptions);
+                // console.log(res.data);
+                setRates(res.data);
+            } catch (error) {
+              console.log(error?.response?.data?.message);
+            }
+        }
+        getRates();
     }, []);
     
     return(
