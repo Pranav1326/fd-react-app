@@ -19,6 +19,7 @@ const Profile = () => {
   const [ accountBtn, setAccountBtn ] = useState(false);
   const [ btn, setBtn ] = useState("createfd");
   const [ accountHistory, setAccountHistory ] = useState(null);
+  const [ userFds, setUserFds ] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,6 +39,12 @@ const Profile = () => {
   });
 
   useEffect(() => {
+    const token = JSON.parse(sessionStorage.getItem('fdt'));
+    const headersList = {
+      "Accept": "*/*",
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json" 
+    }
     const fetchAccountHistory = async () => {
       try {
         const res = await axios.post(`${baseUrl}/transaction`, { userId: user.userInfo._id });
@@ -48,12 +55,6 @@ const Profile = () => {
     }
     fetchAccountHistory();
     const getWalletDetails = async (data, setWallet) => {
-      const token = JSON.parse(sessionStorage.getItem('fdt'));
-      const headersList = {
-        "Accept": "*/*",
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json" 
-      }
       const reqOptions = {
           url: `${baseUrl}/wallet/${data.userId}`,
           method: "GET",
@@ -68,10 +69,26 @@ const Profile = () => {
       }
     }
     getWalletDetails({ userId: user.userInfo._id}, setWallet);
+    const getUsersAllFds = async (data) => {
+      const reqOptions = {
+        url: `${baseUrl}/fd/${user.userInfo._id}`,
+        method: "GET",
+        headers: headersList,
+        data: data,
+    }
+    try {
+        const res = await axios.request(reqOptions);
+        console.log(userFds);
+        setUserFds(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+    }
+    getUsersAllFds({ userId: user.userInfo._id });
     // eslint-disable-next-line
   }, []);
 
-  const fdHistory = user.FdDetails.reverse().map(fd => {
+  const fdHistory = userFds && userFds.reverse().map(fd => {
     return (
       <FdHistory
         key={fd._id}
@@ -92,7 +109,7 @@ const Profile = () => {
         return (
           <div className="fd-history">
             <h1 className='heading'> Create Fixed Deposit </h1>
-            {<CreateFd />}
+            {<CreateFd setBtn={setBtn} />}
           </div>
         );
       case "fd":

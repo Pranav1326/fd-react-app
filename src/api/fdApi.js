@@ -146,3 +146,23 @@ export const createRate = async (data, setRatesUpdated, setBtn) => {
         console.log(error);
     }
 }
+
+// create FD
+export const createFd = async (data, setBtn) => {
+    const reqOptions = {
+        url: `${baseUrl}/fd/create`,
+        method: "POST",
+        headers: headersList,
+        data: data,
+    }
+    try {
+        const res = await axios.request(reqOptions);
+        if(res.data === "Fd created!"){
+            setBtn("fd");
+        }
+        alert(res?.data);
+    } catch (error) {
+        console.log(error);
+        alert(error?.response?.data);
+    }
+}

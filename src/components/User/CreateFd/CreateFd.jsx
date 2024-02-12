@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import jwtPayloadDecoder from 'jwt-payload-decoder';
 import './createfd.css';
-import { getUserRates } from '../../../api/fdApi';
+import { createFd, getUserRates } from '../../../api/fdApi';
 
-const CreateFd = () => {
+const CreateFd = ( props ) => {
 
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
-  // console.log(user);
 
-  const [rates, setRates] = useState(null);
-  const [radio, setRadio] = useState();
-  const [amount, setAmount] = useState("");
+  const [ rates, setRates ] = useState(null);
+  const [ radio, setRadio ] = useState();
+  const [ amount, setAmount ] = useState("");
 
   const createRadioButtons = rates && rates.map((rate, i) => {
     return (
@@ -32,12 +31,12 @@ const CreateFd = () => {
   });
 
   const handleCreateFd = () => {
-    if ((amount === 0 || amount === "") && (renderRate === undefined)) {
+    if (amount === 0 || amount === "" || renderRate === undefined) {
       alert("Please select the data!");
     }
-    // if (amount === 0 || amount === "") {
-    //   alert("Please enter the amount!");
-    // }
+    else if (amount === 0 || amount === "") {
+      alert("Please enter the amount!");
+    }
     else {
       const data = {
         user: {
@@ -49,11 +48,13 @@ const CreateFd = () => {
         months: radio
       };
       console.log(data);
+      createFd(data, props.setBtn);
     }
   }
 
   useEffect(() => {
-    getUserRates({ user: "normal" }, setRates);
+    getUserRates({ user: user.userInfo.account }, setRates);
+    // eslint-disable-next-line
   }, []);
 
   return (
