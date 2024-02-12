@@ -18,13 +18,29 @@ const AdminDashboard = () => {
     
     const [ fdBtn, setfdBtn ] = useState(false);
     const [ accountBtn, setAccountBtn ] = useState(false);
-    const [ btn, setBtn ] = useState("currentRate");
+    const [ btn, setBtn ] = useState("fd");
     const [ centerDetails, setCenterDetails ] = useState(null);
     const [ allFdDetails, setAllFdDetails] = useState(null);
     const [ rates, setRates ] = useState(null);
     const [ ratesUpdated, setRatesUpdated ] = useState(null);
+    // Pagination
+    const [ pagination, setPagination] = useState(true);
+    const [ page, setPage ] = useState(1);
+    const [ pages, setPages ] = useState();
     
     const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
+    
+    // Previous Page
+    const previousPage = async () => {
+        setPage(page => page - 1);
+    }
+
+    // Next Page
+    const nextPage = async () => {
+        if(pages > page){
+        setPage(page => page + 1);
+        }
+    }
     
     const renderDashboard = (btn) => {
         if(btn === "fd"){
@@ -32,6 +48,15 @@ const AdminDashboard = () => {
                 <div className="fd-history">
                     <h1 className='heading'> FD History </h1>
                     {renderAllFds}
+                    {
+                        pagination ? 
+                        <div className='pagination'>
+                            <button onClick={previousPage} disabled={page === 1} >Previous</button>
+                            <p className='page-p'> {page} out of {pages} Pages </p>
+                            <button onClick={nextPage} disabled={page === pages} >Next</button>
+                        </div>
+                        : null
+                    }
                 </div>
             );
         }
@@ -101,13 +126,16 @@ const AdminDashboard = () => {
         getcenterdetails();
         const getFdDetails = async () => {
             const reqOptions = {
-                url: `${baseUrl}/admin/getallfds`,
+                url: `${baseUrl}/admin/getallfds?page=${page}`,
                 method: "GET",
                 headers: headersList,
             }
             try {
                 const res = await axios.request(reqOptions);
-                setAllFdDetails(res.data);
+                console.log(res.data.allFds);
+                setAllFdDetails(res.data.allFds);
+                setPage(res.data.page);
+                setPages(res.data.pages);
             } catch (error) {
               console.log(error?.response?.data?.message);
             }
@@ -127,7 +155,7 @@ const AdminDashboard = () => {
             }
         }
         getRates();
-    }, [ratesUpdated]);
+    }, [ratesUpdated, page]);
     
     return(
         <div className="admin-dashboard-main">

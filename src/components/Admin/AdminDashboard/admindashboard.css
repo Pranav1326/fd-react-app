@@ -15,3 +15,41 @@
 .fd-history{
     margin-bottom: 2rem;
 }
+
+.pagination{
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.pagination>button{
+    color: var(--main-dark-color);
+    background-color: var(--font-white-color);
+    border: none;
+    border-radius: var(--border-inside-width);
+    font-weight: 500;
+    box-shadow: 2px 2px 5px var(--navbar-color);
+    font-size: 1.3rem;
+    padding: 0.2rem 0.7rem;
+}
+
+.pagination>button:disabled{
+    cursor: not-allowed;
+}
+
+.pagination>button:disabled:hover{
+    cursor: not-allowed;
+    color: var(--main-dark-color);
+    background-color: var(--font-white-color);
+}
+
+.pagination>button:hover{
+    cursor: pointer;
+    background-color: var(--medium-color);
+    color: var(--font-white-color);
+}
+
+.pagination>p{
+    color: var(--main-dark-color);
+    font-weight: 600;
+}
