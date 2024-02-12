@@ -24,6 +24,7 @@ const AdminDashboard = () => {
     const [ rates, setRates ] = useState(null);
     const [ ratesUpdated, setRatesUpdated ] = useState(null);
     // Pagination
+    // eslint-disable-next-line
     const [ pagination, setPagination] = useState(true);
     const [ page, setPage ] = useState(1);
     const [ pages, setPages ] = useState();
@@ -132,7 +133,6 @@ const AdminDashboard = () => {
             }
             try {
                 const res = await axios.request(reqOptions);
-                console.log(res.data.allFds);
                 setAllFdDetails(res.data.allFds);
                 setPage(res.data.page);
                 setPages(res.data.pages);
