@@ -109,7 +109,7 @@ export const updateUser = async (data, navigate) => {
 }
 
 // Delete Rate
-export const deleteRate = async (data, setRateDeleted) => {
+export const deleteRate = async (data, setRatesUpdated) => {
     const reqOptions = {
         url: `${baseUrl}/admin/rate/delete/${data.rateId}`,
         method: "DELETE",
@@ -119,7 +119,27 @@ export const deleteRate = async (data, setRateDeleted) => {
     try {
         const res = await axios.request(reqOptions);
         if(res.data === "Rate Deleted!"){
-            setRateDeleted(true);
+            setRatesUpdated(res.data);
+        }
+        alert(res?.data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// Create Rate
+export const createRate = async (data, setRatesUpdated, setBtn) => {
+    const reqOptions = {
+        url: `${baseUrl}/admin/rate/create`,
+        method: "POST",
+        headers: headersList,
+        data: data,
+    }
+    try {
+        const res = await axios.request(reqOptions);
+        if(res.data === "New Rate Created"){
+            setRatesUpdated(new Date().getUTCMilliseconds());
+            setBtn("currentRate");
         }
         alert(res?.data);
     } catch (error) {

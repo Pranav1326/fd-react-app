@@ -22,7 +22,7 @@ const AdminDashboard = () => {
     const [ centerDetails, setCenterDetails ] = useState(null);
     const [ allFdDetails, setAllFdDetails] = useState(null);
     const [ rates, setRates ] = useState(null);
-    const [ rateDeleted, setRateDeleted ] = useState(null);
+    const [ ratesUpdated, setRatesUpdated ] = useState(null);
     
     const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
     
@@ -36,16 +36,16 @@ const AdminDashboard = () => {
             );
         }
         else if(btn === "createRate"){
-            return <CreateRate />
+            return <CreateRate user={user} setRatesUpdated={setRatesUpdated} setBtn={setBtn} />
         }
         else if(btn === "currentRate"){
             return (
                 <div className='current-rates-main'>
                     <h1 className='heading'>Current Rates</h1>
                     <div className="current-rates-div">
-                        <CurrentRates rates={rates} setRateDeleted={setRateDeleted} user={user} for={"student"} />
-                        <CurrentRates rates={rates} setRateDeleted={setRateDeleted} user={user} for={"normal"} />
-                        <CurrentRates rates={rates} setRateDeleted={setRateDeleted} user={user} for={"senior"} />
+                        <CurrentRates rates={rates} setRatesUpdated={setRatesUpdated} user={user} for={"student"} />
+                        <CurrentRates rates={rates} setRatesUpdated={setRatesUpdated} user={user} for={"normal"} />
+                        <CurrentRates rates={rates} setRatesUpdated={setRatesUpdated} user={user} for={"senior"} />
                     </div>
                 </div>
             );
@@ -127,7 +127,7 @@ const AdminDashboard = () => {
             }
         }
         getRates();
-    }, [rateDeleted]);
+    }, [ratesUpdated]);
     
     return(
         <div className="admin-dashboard-main">

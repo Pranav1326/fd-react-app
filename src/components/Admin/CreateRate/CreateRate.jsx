@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './createrate.css';
+import { createRate } from '../../../api/fdApi';
 
-const CreateRate = () => {
+const CreateRate = (props) => {
 
   const [ rateData, setRateData ] = useState({
     rate: "",
@@ -16,7 +17,12 @@ const CreateRate = () => {
   
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(rateData);
+    createRate({
+      userId: props.user._id,
+      interestRate: rateData.rate,
+      months: rateData.duration,
+      for: rateData.profile
+    }, props.setRatesUpdated, props.setBtn);
   }
   
   return (

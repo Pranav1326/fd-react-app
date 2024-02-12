@@ -9,7 +9,7 @@ const CurrentRates = (props) => {
             userId: props.user._id,
             rateId: rateId
         }
-        deleteRate(data, props.setRateDeleted);
+        deleteRate(data, props.setRatesUpdated);
     }
     
     const renderRates = props.rates && props.rates.sort((x, y) => x.months-y.months).map(rate => {
