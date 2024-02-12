@@ -23,7 +23,7 @@ const AdminProfileCard = (props) => {
                 </div>
                 <div className="balance">
                     <p>
-                        Revenue: 
+                        Turnover: 
                     </p>
                     <p className='value'>
                         {props.revenue} ₹

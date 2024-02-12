@@ -107,3 +107,22 @@ export const updateUser = async (data, navigate) => {
         console.log(error);
     }
 }
+
+// Delete Rate
+export const deleteRate = async (data, setRateDeleted) => {
+    const reqOptions = {
+        url: `${baseUrl}/admin/rate/delete/${data.rateId}`,
+        method: "DELETE",
+        headers: headersList,
+        data: data,
+    }
+    try {
+        const res = await axios.request(reqOptions);
+        if(res.data === "Rate Deleted!"){
+            setRateDeleted(true);
+        }
+        alert(res?.data);
+    } catch (error) {
+        console.log(error);
+    }
+}

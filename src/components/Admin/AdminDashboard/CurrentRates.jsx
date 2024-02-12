@@ -1,8 +1,17 @@
 import React from 'react';
 import './currentrates.css';
+import { deleteRate } from '../../../api/fdApi';
 
 const CurrentRates = (props) => {
-
+    
+    const handleDelete = (rateId) => {
+        const data = {
+            userId: props.user._id,
+            rateId: rateId
+        }
+        deleteRate(data, props.setRateDeleted);
+    }
+    
     const renderRates = props.rates && props.rates.sort((x, y) => x.months-y.months).map(rate => {
         if(rate.for === props.for){
             return(
@@ -10,7 +19,7 @@ const CurrentRates = (props) => {
                     <td className='duration'>{rate.months} Months</td>
                     <td>{rate.interestRate}</td>
                     <td>{rate.createdBy.admin.split(".")[1]}</td>
-                    <td className='edit-btn-box'><button>Delete</button></td>
+                    <td className='edit-btn-box'><button onClick={() => handleDelete(rate._id)}>Delete</button></td>
                     {/* <tr className='actions'>
                         <td className='edit-btn-box'><button>Edit</button></td>
                     </tr> */}

@@ -22,6 +22,7 @@ const AdminDashboard = () => {
     const [ centerDetails, setCenterDetails ] = useState(null);
     const [ allFdDetails, setAllFdDetails] = useState(null);
     const [ rates, setRates ] = useState(null);
+    const [ rateDeleted, setRateDeleted ] = useState(null);
     
     const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
     
@@ -42,9 +43,9 @@ const AdminDashboard = () => {
                 <div className='current-rates-main'>
                     <h1 className='heading'>Current Rates</h1>
                     <div className="current-rates-div">
-                        <CurrentRates rates={rates} for={"student"} />
-                        <CurrentRates rates={rates} for={"normal"} />
-                        <CurrentRates rates={rates} for={"senior"} />
+                        <CurrentRates rates={rates} setRateDeleted={setRateDeleted} user={user} for={"student"} />
+                        <CurrentRates rates={rates} setRateDeleted={setRateDeleted} user={user} for={"normal"} />
+                        <CurrentRates rates={rates} setRateDeleted={setRateDeleted} user={user} for={"senior"} />
                     </div>
                 </div>
             );
@@ -78,13 +79,13 @@ const AdminDashboard = () => {
     });
     
     useEffect(() => {
+        const token = JSON.parse(sessionStorage.getItem('fdt'));
+        const headersList = {
+          "Accept": "*/*",
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json" 
+        }
         const getcenterdetails = async () => {
-            const token = JSON.parse(sessionStorage.getItem('fdt'));
-            const headersList = {
-              "Accept": "*/*",
-              "Authorization": `Bearer ${token}`,
-              "Content-Type": "application/json" 
-            }
             const reqOptions = {
                 url: `${baseUrl}/admin/getcenterdata`,
                 method: "GET",
@@ -99,12 +100,6 @@ const AdminDashboard = () => {
         }
         getcenterdetails();
         const getFdDetails = async () => {
-            const token = JSON.parse(sessionStorage.getItem('fdt'));
-            const headersList = {
-              "Accept": "*/*",
-              "Authorization": `Bearer ${token}`,
-              "Content-Type": "application/json" 
-            }
             const reqOptions = {
                 url: `${baseUrl}/admin/getallfds`,
                 method: "GET",
@@ -119,12 +114,6 @@ const AdminDashboard = () => {
         }
         getFdDetails();
         const getRates = async () => {
-            const token = JSON.parse(sessionStorage.getItem('fdt'));
-            const headersList = {
-              "Accept": "*/*",
-              "Authorization": `Bearer ${token}`,
-              "Content-Type": "application/json" 
-            }
             const reqOptions = {
                 url: `${baseUrl}/rate`,
                 method: "GET",
@@ -132,14 +121,13 @@ const AdminDashboard = () => {
             }
             try {
                 const res = await axios.request(reqOptions);
-                // console.log(res.data);
                 setRates(res.data);
             } catch (error) {
               console.log(error?.response?.data?.message);
             }
         }
         getRates();
-    }, []);
+    }, [rateDeleted]);
     
     return(
         <div className="admin-dashboard-main">
@@ -177,7 +165,7 @@ const AdminDashboard = () => {
                 <button
                     className={btn === "logout" ? 'account-btn active' : 'account-btn'}
                     onClick={handleLogout}>Logout</button>
-                </div>
+            </div>
             </div>
             <div className="details-for-admin">
                 {renderDashboard(btn)}
