@@ -46,6 +46,13 @@ const Withdraw = () => {
     setCardDetails(preValue => ({ ...preValue, [name]: value }));
   }
 
+  const handleKeyDown = (e) => {
+    // Allow only numeric characters and specific control keys
+    if (!/[0-9\b]/.test(e.key) && !['ArrowLeft', 'ArrowRight', 'Delete', 'Backspace'].includes(e.key)) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div className='deposit-main'>
       <h1 className='heading-main'> Withdraw Cash </h1>
@@ -76,6 +83,7 @@ const Withdraw = () => {
               maxLength="16"
               minLength="16"
               value={cardDetails.number}
+              onKeyDown={handleKeyDown}
               onChange={handleChange}
             />
           </div>
@@ -121,14 +129,16 @@ const Withdraw = () => {
           <div className="deposit-amount">
             <span>Amount In Rupee</span>
             <input 
-              type="number" 
+              type="text" 
               className='card-input-value' 
               name='amount'
               autoComplete='off'
               value={amount}
               onChange={e => setAmount(e.target.value)}
+              onKeyDown={handleKeyDown}
               maxLength='7'
               minLength='3'
+              pattern="[0-9]"
             />
           </div>
           { showAlert ? <span className='alert'>*Please enter between 100₹ to 10,00,000₹</span> : "" }
