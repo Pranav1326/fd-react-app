@@ -9,14 +9,15 @@
 }
 
 .admin-request-component,
-.admin-list-component{
+.admin-list-component,
+.all-users-component{
     background-color: var(--font-white-color);
     border-radius: var(--border-outside-width);
     padding: 1rem 2rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
     color: var(--main-dark-color);
-    box-shadow: var(--box-shadow)
+    box-shadow: var(--box-shadow);
 }
 
 .admin-request-name-email{
@@ -26,21 +27,29 @@
 }
 
 .admin-request-component span,
-.admin-list-component span{
+.admin-list-component span,
+.all-users-component span{
     font-weight: 700;
     display: inline;
 }
 
 .admin-request-component p,
-.admin-list-component p{
+.admin-list-component p,
+.all-users-component p{
     font-weight: 500;
     display: inline-block;
     margin: 0.5rem;
 }
 
+.all-users-name-email>div{
+    margin: 0.5rem 0;
+}
+
 .admin-request-status-created,
 .admin-list-active-status,
-.admin-list-rates-created{
+.admin-list-rates-created,
+.all-users-account-fds,
+.all-users-work-created{
     display: flex;
     align-items: center;
     justify-content: space-between;

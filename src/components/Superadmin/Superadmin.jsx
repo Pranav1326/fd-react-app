@@ -19,7 +19,7 @@ const Superadmin = () => {
     
     const [ fdBtn, setfdBtn ] = useState(false);
     const [ accountBtn, setAccountBtn ] = useState(false);
-    const [ btn, setBtn ] = useState("adminList");
+    const [ btn, setBtn ] = useState("allUsers");
     const [ centerDetails, setCenterDetails ] = useState(null);
     const [ allFdDetails, setAllFdDetails] = useState(null);
     // Pagination
@@ -115,7 +115,7 @@ const Superadmin = () => {
     
     const renderAdminRequests = adminRequests.map(request => {
         return(
-            <div className="admin-request-component">
+            <div className="admin-request-component" key={request._id}>
                 <div className="admin-request-name-email">
                     <div>
                         <span>Admin Name: </span>
@@ -203,7 +203,7 @@ const Superadmin = () => {
 
     const renderAdminList = adminList.map(admin => {
         return (
-            <div className="admin-list-component">
+            <div className="admin-list-component" key={admin._id}>
                 <div>
                     <span>Admin Name: </span>
                     <p>{admin.username}</p>
@@ -233,6 +233,182 @@ const Superadmin = () => {
                     </div>
                 </div>
                 <button className="admin-list-view-admin-btn dark-btn">View Admin</button>
+            </div>
+        );
+    });
+    
+    const userList = [
+        {
+            "otp": null,
+            "active": false,
+            "account": "normal",
+            "_id": "64491f9586c74ee384f11079",
+            "username": "test",
+            "email": "cixoma3117@in2reach.com",
+            "password": "$2b$10$XlqnWA9RR55GTdzX9iLgQelo/Xb9AWuGPJAgyCL1gQNRt.xI6x0aK",
+            "Fd": [],
+            "profilepic": "",
+            "createdAt": "2023-04-26T12:56:53.350Z",
+            "updatedAt": "2023-11-07T08:49:50.296Z",
+            "__v": 0,
+            "dateOfBirth": null,
+            "work": ""
+        },
+        {
+            "otp": null,
+            "_id": "640c5cafd6ce082123d658b8",
+            "username": "pranav",
+            "email": "visavadiapa@gmail.com",
+            "password": "$2b$10$uZYio4QnvgeyoXQXP3utfuMCfpb5LMz4EowK/mvGOPkM3/SUeFY8G",
+            "Fd": [
+                "640c6027d6ce082123d658c6",
+                "641471da6ab60c43eea23123",
+                "641472c21f34fddee975aa09",
+                "6419a195e3dd08ee7c40f762",
+                "6419a3934f54bb13238f1eb6",
+                "6419a3e5404acb18670e17b0"
+            ],
+            "profilepic": "",
+            "__v": 0,
+            "updatedAt": "2023-11-08T03:00:06.565Z",
+            "work": "Full Stack Developer",
+            "dateOfBirth": "1998-11-08T00:00:00.000Z",
+            "active": true,
+            "account": "student"
+        },
+        {
+            "otp": null,
+            "active": false,
+            "account": "normal",
+            "_id": "640c243bbcadc9188c24b4e4",
+            "username": "lalu",
+            "email": "preyansh51199@gmail.com",
+            "password": "$2b$10$fxC4MTdTmHsornhK1LYhs.RmSEuqwuBmRPxh5MywVfv0Ojf469IAS",
+            "Fd": [
+                "640c60aad6ce082123d658cf",
+                "640c674b2e49ef1c82021c57",
+                "640c679494bc620eca8020d0",
+                "640c824499eabec4d06827cb"
+            ],
+            "profilepic": "",
+            "__v": 0
+        },
+        {
+            "otp": null,
+            "active": false,
+            "account": "normal",
+            "_id": "64f46c1f2a4036c296ba20bf",
+            "username": "vyom",
+            "email": "geyoci9888@synclane.com",
+            "password": "$2b$10$tj3njBjB1xW2GulMWW27/uYGhkdzsVk3HaETCfzCKZO7gjqrMwnCi",
+            "Fd": [],
+            "profilepic": "",
+            "createdAt": "2023-09-03T11:21:03.490Z",
+            "updatedAt": "2023-09-15T04:06:27.062Z",
+            "__v": 0,
+            "dateOfBirth": "2004-06-15T00:00:00.000Z",
+            "work": "Student at MIT"
+        },
+        {
+            "_id": "6558d7cbfe3e7b3a9f623345",
+            "username": "test1",
+            "email": "nikeseg481@bixolabs.com",
+            "password": "$2b$10$NijNfMmm0HtQ53iFq9IYsujrHfPKfjeLejHwZOEzPRtXRpTG9k0Wm",
+            "otp": null,
+            "active": true,
+            "account": "normal",
+            "Fd": [],
+            "profilepic": "",
+            "createdAt": "2023-11-18T15:27:07.078Z",
+            "updatedAt": "2023-11-18T15:35:01.156Z",
+            "__v": 0
+        },
+        {
+            "_id": "65591bd54a4cc756260876a6",
+            "username": "rishi",
+            "email": "vadukulrishi@gmail.com",
+            "password": "$2b$10$y8Y/7FO1u0sf3Vh0bTXtvegVIpSbGONkCkzTWdFg6vWJoeNFeqUQa",
+            "otp": null,
+            "active": true,
+            "account": "normal",
+            "Fd": [
+                "65591d7b75296cee6d93e74b",
+                "65ca6027d40765bcd9930748",
+                "65ca649c81744ab2223639e6"
+            ],
+            "profilepic": "",
+            "createdAt": "2023-11-18T20:17:25.607Z",
+            "updatedAt": "2024-02-12T18:34:05.016Z",
+            "__v": 0,
+            "dateOfBirth": null,
+            "work": ""
+        },
+        {
+            "_id": "6559eaf81a5e7d88e9d09d7f",
+            "username": "test3",
+            "email": "wepak72107@bikedid.com",
+            "password": "$2b$10$7FZ.EyLv/ytsACOQNjHz4ODkzEmHTGEcYJaX4puvo5DEtnec9gYR.",
+            "otp": null,
+            "active": true,
+            "account": "normal",
+            "Fd": [],
+            "profilepic": "",
+            "createdAt": "2023-11-19T11:01:12.122Z",
+            "updatedAt": "2023-11-19T11:19:28.932Z",
+            "__v": 0
+        },
+        {
+            "_id": "65cb24a82e62df7fec660892",
+            "username": "yashraj",
+            "email": "yashrajchanchad@gmail.com",
+            "password": "$2b$10$df8Z8sa4jawTtlp9SX3eleHhVAHggQ6ngOIecIoLVFN6NwyRspb9u",
+            "otp": null,
+            "active": true,
+            "account": "normal",
+            "Fd": [
+                "65cb255a2e62df7fec6608b4"
+            ],
+            "profilepic": "",
+            "createdAt": "2024-02-13T08:13:28.952Z",
+            "updatedAt": "2024-02-13T08:16:28.021Z",
+            "__v": 0
+        }
+    ];
+
+    const renderUserList = userList.map(user => {
+        return (
+            <div className="all-users-component" key={user._id}>
+                <div className="all-users-name-email">
+                    <div>
+                        <span>User: </span>
+                        <p>{user.username}</p>
+                    </div>
+                    <div>
+                        <span>Email: </span>
+                        <p>{user.email}</p>
+                    </div>
+                </div>
+                <div className="all-users-account-fds">
+                    <div>
+                        <span>Account: </span>
+                        <p>{user.account}</p>
+                    </div>
+                    <div>
+                        <span>Fds: </span>
+                        <p>{user.Fd.length}</p>
+                    </div>
+                </div>
+                <div className="all-users-work-created">
+                    <div>
+                        <span>Work: </span>
+                        <p>{user.work}</p>
+                    </div>
+                    <div>
+                        <span>Created At: </span>
+                        <p>{new Date(user.createdAt).toLocaleDateString()}</p>
+                    </div>
+                </div>
+                <button className="all-users-show-user dark-btn">Show User</button>
             </div>
         );
     });
@@ -275,6 +451,7 @@ const Superadmin = () => {
             return (
                 <div className='current-rates-main'>
                     <h1 className='heading'> All Users </h1>
+                    {renderUserList}
                 </div>
             );
         }
