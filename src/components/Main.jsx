@@ -11,6 +11,7 @@ import Auth from "./Auth/Auth";
 import AdminDashboard from "./Admin/AdminDashboard/AdminDashboard";
 import ApplyForAdmin from "./Admin/AuthAdmin/ApplyForAdmin";
 import { useSelector } from "react-redux";
+import Superadmin from "./Superadmin/Superadmin";
 
 const Main = () => {
 
@@ -28,6 +29,7 @@ const Main = () => {
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/wallet" element={user.token ? <Wallet /> : <Auth /> } />
           <Route path="/admindashboard" element={user.userType === 1 || user.userType === 0 ? <AdminDashboard /> : <Auth /> } />
+          <Route path="/superadmindashboard" element={<Superadmin />} />
         </Routes>
       </div>
       <Footer />
