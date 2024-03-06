@@ -19,7 +19,7 @@ const Superadmin = () => {
     
     const [ fdBtn, setfdBtn ] = useState(false);
     const [ accountBtn, setAccountBtn ] = useState(false);
-    const [ btn, setBtn ] = useState("adminRequests");
+    const [ btn, setBtn ] = useState("adminList");
     const [ centerDetails, setCenterDetails ] = useState(null);
     const [ allFdDetails, setAllFdDetails] = useState(null);
     // Pagination
@@ -144,6 +144,99 @@ const Superadmin = () => {
         );
     });
     
+    const adminList = [
+        {
+            "otp": null,
+            "validated": false,
+            "_id": "65528b5e75354a8cb69eb168",
+            "username": "test",
+            "email": "tawof37701@jucatyo.com",
+            "active": false,
+            "ratesCreated": [],
+            "adminStatus": "temporary",
+            "createdAt": "2023-11-13T20:47:26.382Z",
+            "updatedAt": "2023-11-13T20:47:26.382Z",
+            "__v": 0
+        },
+        {
+            "otp": null,
+            "validated": false,
+            "_id": "65528e194fda87b48dc7dd74",
+            "username": "admin.test1",
+            "email": "rekesa8211@mainmile.com",
+            "active": true,
+            "ratesCreated": [],
+            "adminStatus": "permanent",
+            "createdAt": "2023-11-13T20:59:05.569Z",
+            "updatedAt": "2023-11-14T09:01:46.906Z",
+            "__v": 0,
+            "password": "$2b$10$SfmX7WE6aHaDIuCV3kdXreC8HtAwnVWfzr.McOm2ctZ.9MXpzd6Uy"
+        },
+        {
+            "_id": "6558e37c8c7d2b2f2d1e76fb",
+            "username": "test2",
+            "email": "nikeseg481@bixolabs.com",
+            "otp": null,
+            "validated": true,
+            "active": false,
+            "ratesCreated": [],
+            "adminStatus": "temporary",
+            "createdAt": "2023-11-18T16:17:00.958Z",
+            "updatedAt": "2023-11-18T16:42:20.090Z",
+            "__v": 0
+        },
+        {
+            "_id": "65c245453f6c41ce70174542",
+            "username": "admin.pranav",
+            "email": "visavadiapa@gmail.com",
+            "otp": null,
+            "validated": true,
+            "active": true,
+            "ratesCreated": [],
+            "adminStatus": "permanent",
+            "createdAt": "2024-02-06T14:42:13.959Z",
+            "updatedAt": "2024-02-06T14:46:35.115Z",
+            "__v": 0,
+            "password": "$2b$10$XlZD9WHHkEsNAtTZPaJpWejaNjGo1x1hFnj1Hiqh/5jXynqIc5YaC"
+        }
+    ];
+
+    const renderAdminList = adminList.map(admin => {
+        return (
+            <div className="admin-list-component">
+                <div>
+                    <span>Admin Name: </span>
+                    <p>{admin.username}</p>
+                </div>
+                <div className='admin-list-email'>
+                    <span>Email: </span>
+                    <p>{admin.email}</p>
+                </div>
+                <div className="admin-list-active-status">
+                    <div>
+                        <span>Active</span>
+                        <p>{admin.active ? "True" : "False"}</p>
+                    </div>
+                    <div>
+                        <span>Status: </span>
+                        <p>{admin.adminStatus}</p>
+                    </div>
+                </div>
+                <div className="admin-list-rates-created">
+                    <div>
+                        <span>Rates Created: </span>
+                        <p>{admin.ratesCreated.length}</p>
+                    </div>
+                    <div>
+                        <span>Admin Created At: </span>
+                        <p>{new Date(admin.createdAt).toLocaleDateString()}</p>
+                    </div>
+                </div>
+                <button className="admin-list-view-admin-btn dark-btn">View Admin</button>
+            </div>
+        );
+    });
+    
     const renderDashboard = (btn) => {
         if(btn === "allFds"){
             return(
@@ -174,6 +267,7 @@ const Superadmin = () => {
             return (
                 <div className='current-rates-main'>
                     <h1 className='heading'> Admin List </h1>
+                    {renderAdminList}
                 </div>
             );
         }
