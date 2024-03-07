@@ -20,7 +20,7 @@ const Superadmin = () => {
     
     const [ fdBtn, setfdBtn ] = useState(false);
     const [ accountBtn, setAccountBtn ] = useState(false);
-    const [ btn, setBtn ] = useState("allUsers");
+    const [ btn, setBtn ] = useState("adminRequests");
     const [ centerDetails, setCenterDetails ] = useState(null);
     const [ allFdDetails, setAllFdDetails] = useState(null);
     // Pagination
@@ -925,7 +925,7 @@ const Superadmin = () => {
                 <div className="profilecard-btns">
                     { centerDetails && 
                         <AdminProfileCard
-                            username = {user.username}
+                            username = {user.username.split(".")[0]}
                             joinedDate = {user.createdAt}
                             revenue = {centerDetails.centerData.revenue}
                             totalfds = {centerDetails.centerData.totalFds}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './signin.css';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { adminLogin, userLogin } from '../../api/userApi';
+import { adminLogin, superadminLogin, userLogin } from '../../api/userApi';
 
 const Signin = ({setUserExists}) => {
 
@@ -21,6 +21,9 @@ const Signin = ({setUserExists}) => {
     const ifAdmin = data.username.split('.')[0];
     if(ifAdmin === "admin"){
       adminLogin({username: data.username, password: data.password}, dispatch, navigate);
+    }
+    if(ifAdmin === "superadmin"){
+      superadminLogin({username: data.username, password: data.password}, dispatch, navigate);
     }
     else{
       userLogin(data, dispatch, navigate);

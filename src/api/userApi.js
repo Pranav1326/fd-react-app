@@ -36,6 +36,20 @@ export const adminLogin = async (data, dispatch, navigate) => {
     }
 }
 
+// Superadmin Login
+export const superadminLogin = async (data, dispatch, navigate) => {
+    dispatch(LOGIN_START());
+    try {
+        const res = await axios.post(`${baseUrl}/superadmin/signin`, data);
+        dispatch(LOGIN_SUCCESS(res.data));
+        sessionStorage.setItem("fdt", JSON.stringify(res.data.token));
+        sessionStorage.setItem("usrt", JSON.stringify(res.data.userType));
+        navigate('/superadmindashboard');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 // Logout
 export const logout = async (dispatch, navigate) => {
     try {

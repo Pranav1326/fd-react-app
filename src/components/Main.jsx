@@ -27,9 +27,9 @@ const Main = () => {
           <Route path="/applyforadmin" element={<ApplyForAdmin />} />
           <Route path="/profile" element={ user.token ? <Profile /> : <Auth /> } />
           <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/wallet" element={user.token ? <Wallet /> : <Auth /> } />
-          <Route path="/admindashboard" element={user.userType === 1 || user.userType === 0 ? <AdminDashboard /> : <Auth /> } />
-          <Route path="/superadmindashboard" element={<Superadmin />} />
+          <Route path="/wallet" element={ user.token ? <Wallet /> : <Auth /> } />
+          <Route path="/admindashboard" element={ user.userType === 1 || user.userType === 0 ? <AdminDashboard /> : <Auth /> } />
+          <Route path="/superadmindashboard" element={ user.userType === 0 ? <Superadmin /> : <Auth /> } />
         </Routes>
       </div>
       <Footer />
