@@ -9,6 +9,7 @@ import { baseUrl } from '../../api/url';
 import axios from 'axios';
 import AdminProfileCard from '../Admin/AdminDashboard/AdminProfileCard';
 import FdHistory from '../User/Profile/FdHistory';
+import AccountHistory from '../User/Profile/AccountHistory';
 
 const Superadmin = () => {
 
@@ -401,7 +402,7 @@ const Superadmin = () => {
                 <div className="all-users-work-created">
                     <div>
                         <span>Work: </span>
-                        <p>{user.work}</p>
+                        <p>{(user.work === null || user.work === "") ? "None" : user.work}</p>
                     </div>
                     <div>
                         <span>Created At: </span>
@@ -412,6 +413,393 @@ const Superadmin = () => {
             </div>
         );
     });
+    
+    const transactions = [
+        {
+            "user": {
+                "userId": "640c2444bcadc9188c24b4e8",
+                "username": "rishi"
+            },
+            "_id": "641486295183cb608e415aab",
+            "transaction": "create fd",
+            "amount": 10000,
+            "createdAt": "2023-03-17T15:24:25.672Z",
+            "updatedAt": "2023-03-17T15:24:25.672Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64f46c1f2a4036c296ba20bf",
+                "username": "vyom"
+            },
+            "_id": "64f4ab9d90a5b2044d286af6",
+            "transaction": "deposit",
+            "amount": 1500,
+            "createdAt": "2023-09-03T15:51:57.310Z",
+            "updatedAt": "2023-09-03T15:51:57.310Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64491f9586c74ee384f11079",
+                "username": "test"
+            },
+            "_id": "64f4a69175e4b269bbddfd17",
+            "transaction": "deposit",
+            "amount": 2500,
+            "createdAt": "2023-09-03T15:30:25.840Z",
+            "updatedAt": "2023-09-03T15:30:25.840Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c2444bcadc9188c24b4e8",
+                "username": "rishi"
+            },
+            "_id": "641485d95183cb608e415a97",
+            "transaction": "create fd",
+            "amount": 6000,
+            "createdAt": "2023-03-17T15:23:05.391Z",
+            "updatedAt": "2023-03-17T15:23:05.391Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c5cafd6ce082123d658b8",
+                "username": "pranav"
+            },
+            "_id": "6419a174e3dd08ee7c40f75e",
+            "transaction": "deposit",
+            "amount": 5000,
+            "createdAt": "2023-03-21T12:22:12.958Z",
+            "updatedAt": "2023-03-21T12:22:12.958Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c5cafd6ce082123d658b8",
+                "username": "pranav"
+            },
+            "_id": "64147f24ecd4294dbe3e0949",
+            "transaction": "deposit",
+            "amount": 5000,
+            "createdAt": "2023-03-17T14:54:28.109Z",
+            "updatedAt": "2023-03-17T14:54:28.109Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c5cafd6ce082123d658b8",
+                "username": "pranav"
+            },
+            "_id": "6419a3e6404acb18670e17b5",
+            "transaction": "create fd",
+            "amount": 5000,
+            "createdAt": "2023-03-21T12:32:38.716Z",
+            "updatedAt": "2023-03-21T12:32:38.716Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c5cafd6ce082123d658b8",
+                "username": "pranav"
+            },
+            "_id": "64147f3aecd4294dbe3e094d",
+            "transaction": "withdraw",
+            "amount": 5000,
+            "createdAt": "2023-03-17T14:54:50.238Z",
+            "updatedAt": "2023-03-17T14:54:50.238Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c2444bcadc9188c24b4e8",
+                "username": "rishi"
+            },
+            "_id": "641481c14cfe62d4ee6b7fb9",
+            "transaction": "deposit",
+            "amount": 12000,
+            "createdAt": "2023-03-17T15:05:37.419Z",
+            "updatedAt": "2023-03-17T15:05:37.419Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64491f9586c74ee384f11079",
+                "username": "test"
+            },
+            "_id": "654a25a1203aa7ad6ff9c664",
+            "transaction": "deposit",
+            "amount": 25000,
+            "createdAt": "2023-11-07T11:55:13.894Z",
+            "updatedAt": "2023-11-07T11:55:13.894Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64f46c1f2a4036c296ba20bf",
+                "username": "vyom"
+            },
+            "_id": "64f4a6b3cb3de855bfbe82ba",
+            "transaction": "deposit",
+            "amount": 250,
+            "createdAt": "2023-09-03T15:30:59.383Z",
+            "updatedAt": "2023-09-03T15:30:59.383Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64f46c1f2a4036c296ba20bf",
+                "username": "vyom"
+            },
+            "_id": "64f4ab5d90a5b2044d286aee",
+            "transaction": "deposit",
+            "amount": 7500,
+            "createdAt": "2023-09-03T15:50:53.699Z",
+            "updatedAt": "2023-09-03T15:50:53.699Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64491f9586c74ee384f11079",
+                "username": "test"
+            },
+            "_id": "64f4a6a8cb3de855bfbe82b6",
+            "transaction": "deposit",
+            "amount": 2500,
+            "createdAt": "2023-09-03T15:30:48.611Z",
+            "updatedAt": "2023-09-03T15:30:48.611Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64491f9586c74ee384f11079",
+                "username": "test"
+            },
+            "_id": "64f4ac7490a5b2044d286e9b",
+            "transaction": "withdraw",
+            "amount": 2000,
+            "createdAt": "2023-09-03T15:55:32.123Z",
+            "updatedAt": "2023-09-03T15:55:32.123Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65591bd54a4cc756260876a6",
+                "username": "rishi"
+            },
+            "_id": "65591cd638cd06f373533be2",
+            "transaction": "deposit",
+            "amount": 10000,
+            "createdAt": "2023-11-18T20:21:42.953Z",
+            "updatedAt": "2023-11-18T20:21:42.953Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c2444bcadc9188c24b4e8",
+                "username": "rishi"
+            },
+            "_id": "641481d34cfe62d4ee6b7fbe",
+            "transaction": "withdraw",
+            "amount": 2000,
+            "createdAt": "2023-03-17T15:05:55.428Z",
+            "updatedAt": "2023-03-17T15:05:55.428Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64491f9586c74ee384f11079",
+                "username": "test"
+            },
+            "_id": "654a5310203aa7ad6ff9c6c1",
+            "transaction": "withdraw",
+            "amount": 3000,
+            "createdAt": "2023-11-07T15:09:04.731Z",
+            "updatedAt": "2023-11-07T15:09:04.731Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c5cafd6ce082123d658b8",
+                "username": "pranav"
+            },
+            "_id": "6419a197e3dd08ee7c40f767",
+            "transaction": "create fd",
+            "amount": 5000,
+            "createdAt": "2023-03-21T12:22:47.045Z",
+            "updatedAt": "2023-03-21T12:22:47.045Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c5cafd6ce082123d658b8",
+                "username": "pranav"
+            },
+            "_id": "6419a3954f54bb13238f1ebb",
+            "transaction": "create fd",
+            "amount": 5000,
+            "createdAt": "2023-03-21T12:31:17.305Z",
+            "updatedAt": "2023-03-21T12:31:17.305Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64f46c1f2a4036c296ba20bf",
+                "username": "vyom"
+            },
+            "_id": "64f4a753cb3de855bfbe82c1",
+            "transaction": "deposit",
+            "amount": 2500,
+            "createdAt": "2023-09-03T15:33:39.012Z",
+            "updatedAt": "2023-09-03T15:33:39.012Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65591bd54a4cc756260876a6",
+                "username": "rishi"
+            },
+            "_id": "65591d7c75296cee6d93e750",
+            "transaction": "create fd",
+            "amount": 5000,
+            "createdAt": "2023-11-18T20:24:28.172Z",
+            "updatedAt": "2023-11-18T20:24:28.172Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "640c2444bcadc9188c24b4e8",
+                "username": "rishi"
+            },
+            "_id": "641485ff5183cb608e415a9e",
+            "transaction": "brake fd",
+            "amount": 6000,
+            "createdAt": "2023-03-17T15:23:43.381Z",
+            "updatedAt": "2023-03-17T15:23:43.381Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64f46c1f2a4036c296ba20bf",
+                "username": "vyom"
+            },
+            "_id": "64f4abdf90a5b2044d286b08",
+            "transaction": "deposit",
+            "amount": 2500,
+            "createdAt": "2023-09-03T15:53:03.680Z",
+            "updatedAt": "2023-09-03T15:53:03.680Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64f46c1f2a4036c296ba20bf",
+                "username": "vyom"
+            },
+            "_id": "64f4a84a1727c58a07312a23",
+            "transaction": "withdraw",
+            "amount": 250,
+            "createdAt": "2023-09-03T15:37:46.618Z",
+            "updatedAt": "2023-09-03T15:37:46.618Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "64491f9586c74ee384f11079",
+                "username": "test"
+            },
+            "_id": "64f4ac1190a5b2044d286b20",
+            "transaction": "deposit",
+            "amount": 15000,
+            "createdAt": "2023-09-03T15:53:53.407Z",
+            "updatedAt": "2023-09-03T15:53:53.407Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65591bd54a4cc756260876a6",
+                "username": "rishi"
+            },
+            "_id": "65c2396e5baf15ae08fa0f52",
+            "transaction": "deposit",
+            "amount": 15000,
+            "createdAt": "2024-02-06T13:51:42.147Z",
+            "updatedAt": "2024-02-06T13:51:42.147Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65591bd54a4cc756260876a6",
+                "username": "rishi"
+            },
+            "_id": "65ca6028d40765bcd993074d",
+            "transaction": "create fd",
+            "amount": 15000,
+            "createdAt": "2024-02-12T18:15:04.897Z",
+            "updatedAt": "2024-02-12T18:15:04.897Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65591bd54a4cc756260876a6",
+                "username": "rishi"
+            },
+            "_id": "65ca649d81744ab2223639eb",
+            "transaction": "create fd",
+            "amount": 5000,
+            "createdAt": "2024-02-12T18:34:05.506Z",
+            "updatedAt": "2024-02-12T18:34:05.506Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65591bd54a4cc756260876a6",
+                "username": "rishi"
+            },
+            "_id": "65ca68db1c528365888b3811",
+            "transaction": "deposit",
+            "amount": 50000,
+            "createdAt": "2024-02-12T18:52:11.506Z",
+            "updatedAt": "2024-02-12T18:52:11.506Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65cb24a82e62df7fec660892",
+                "username": "yashraj"
+            },
+            "_id": "65cb25392e62df7fec6608ab",
+            "transaction": "deposit",
+            "amount": 1000000,
+            "createdAt": "2024-02-13T08:15:53.694Z",
+            "updatedAt": "2024-02-13T08:15:53.694Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65cb24a82e62df7fec660892",
+                "username": "yashraj"
+            },
+            "_id": "65cb255c2e62df7fec6608b9",
+            "transaction": "create fd",
+            "amount": 1000000,
+            "createdAt": "2024-02-13T08:16:28.479Z",
+            "updatedAt": "2024-02-13T08:16:28.479Z",
+            "__v": 0
+        },
+        {
+            "user": {
+                "userId": "65cb24a82e62df7fec660892",
+                "username": "yashraj"
+            },
+            "_id": "65cb257d2e62df7fec6608c5",
+            "transaction": "deposit",
+            "amount": 500000,
+            "createdAt": "2024-02-13T08:17:01.058Z",
+            "updatedAt": "2024-02-13T08:17:01.058Z",
+            "__v": 0
+        }
+    ];
     
     const renderDashboard = (btn) => {
         if(btn === "allFds"){
@@ -459,6 +847,18 @@ const Superadmin = () => {
             return (
                 <div className='current-rates-main'>
                     <h1 className='heading'> All Transactions </h1>
+                    {
+                        transactions && transactions.reverse().map(tran => {
+                            return(
+                            <AccountHistory
+                                key={tran._id}
+                                transaction={tran.transaction}
+                                createdAt={tran.createdAt}
+                                amount={tran.amount}
+                            />
+                            );
+                        })
+                    }
                 </div>
             );
         }
