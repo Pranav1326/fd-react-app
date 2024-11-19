@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     token: JSON.parse(sessionStorage.getItem("fdt")) || null,
-    userType: JSON.parse(sessionStorage.getItem("usrt")) || null,
+    userType: JSON.parse(sessionStorage.getItem("usrt")),
     isFetching: false,
     error: false
 }

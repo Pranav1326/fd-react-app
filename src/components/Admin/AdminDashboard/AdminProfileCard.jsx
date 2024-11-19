@@ -2,8 +2,21 @@ import React from 'react';
 import '../../User/Profile/profilecard.css'
 
 const AdminProfileCard = (props) => {
-
-
+    
+    const renderRevenue = () => {
+        const revenue = props.revenue.toString().split('').reverse();
+        const rev = [];
+        for (let index = 0; index < revenue.length; index++) {
+            if(index%3 === 0){
+                rev.push(',');
+                rev.push(revenue[index]);
+            }
+            else rev.push(revenue[index]);
+        }
+        rev.reverse().pop();
+        const r = rev.join('');
+        return r;
+    }
     
     return (
         <div className='profile-card-main'>
@@ -26,7 +39,8 @@ const AdminProfileCard = (props) => {
                         Turnover: 
                     </p>
                     <p className='value'>
-                        {props.revenue} ₹
+                        {/* {props.revenue} ₹ */}
+                        {renderRevenue()} ₹
                     </p>
                 </div>
                 <div className="total-fds">

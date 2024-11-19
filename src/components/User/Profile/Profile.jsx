@@ -78,7 +78,6 @@ const Profile = () => {
     }
     try {
         const res = await axios.request(reqOptions);
-        console.log(userFds);
         setUserFds(res.data);
     } catch (error) {
       console.log(error);
@@ -158,7 +157,7 @@ const Profile = () => {
     <div className='profile-main'>
       <div className="profilecard-btns">
         {/* Profile Details Card */}
-        { wallet &&
+        { wallet ?
            <ProfileCard
             username={user.userInfo.username}
             balance={wallet.money}
@@ -166,7 +165,7 @@ const Profile = () => {
             runningfds={user.FdDetails}
             maturedfds={user.FdDetails}
             brokenfds={user.FdDetails}
-          />
+          /> : <p>Loading...</p>
         }
         {/* Buttons */}
         <div className="account-btns">

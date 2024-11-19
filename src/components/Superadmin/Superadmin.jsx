@@ -215,12 +215,12 @@ const Superadmin = () => {
                 </div>
                 <div className="admin-list-active-status">
                     <div>
-                        <span>Active</span>
-                        <p>{admin.active ? "True" : "False"}</p>
+                        <span>Active: </span>
+                        <p>{admin.active ? "Yes" : "No"}</p>
                     </div>
                     <div>
                         <span>Status: </span>
-                        <p>{admin.adminStatus}</p>
+                        <p style={{ textTransform: 'capitalize' }}>{admin.adminStatus}</p>
                     </div>
                 </div>
                 <div className="admin-list-rates-created">

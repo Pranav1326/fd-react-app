@@ -17,6 +17,11 @@ const Main = () => {
 
   const user = useSelector(state => state.userReducer);
 
+  // const screenWidth = window.innerWidth;
+  // const screenHeight = window.innerHeight;
+
+  // console.table(screenHeight, screenWidth);
+
   return (
     <Router>
       <Navbar />

@@ -7,6 +7,21 @@ const ProfileCard = (props) => {
     const matureFds = props && props.maturedfds.filter(e => e.status === "matured");
     const brokenfds = props && props.brokenfds.filter(e => e.status === "broken");
 
+    const renderRevenue = () => {
+        const revenue = props.balance.toString().split('').reverse();
+        const rev = [];
+        for (let index = 0; index < revenue.length; index++) {
+            if(index%3 === 0){
+                rev.push(',');
+                rev.push(revenue[index]);
+            }
+            else rev.push(revenue[index]);
+        }
+        rev.reverse().pop();
+        const r = rev.join('');
+        return r;
+    }
+    
     return (
         <div className='profile-card-main'>
             <div className="profile-pic">
@@ -28,7 +43,7 @@ const ProfileCard = (props) => {
                         Balance: 
                     </p>
                     <p className='value'>
-                        {props.balance}
+                        {renderRevenue()}
                     </p>
                 </div>
                 <div className="total-fds">

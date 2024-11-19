@@ -10,7 +10,7 @@ const Deposit = () => {
   // user
   const user = jwtPayloadDecoder.getPayload(JSON.parse(sessionStorage.getItem("fdt")));
 
-  const [ cardDetails, setCardDetails ] = useState({
+  const [cardDetails, setCardDetails] = useState({
     cvc: "",
     expiry: "",
     focus: "",
@@ -18,16 +18,16 @@ const Deposit = () => {
     number: "",
   });
 
-  const [ amount, setAmount ] = useState('');
-  const [ showAlert, setShowAlert ] = useState(false);
+  const [amount, setAmount] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleWithdraw = () => {
-    if(amount<100 || amount>1000000){
+    if (amount < 100 || amount > 1000000) {
       setShowAlert(true);
     }
-    else{
+    else {
       setShowAlert(false);
-      deposit({userId: user.userInfo._id, deposit: amount}, setAmount);
+      deposit({ userId: user.userInfo._id, deposit: amount }, setAmount);
     }
   }
 
@@ -41,7 +41,7 @@ const Deposit = () => {
     } else if (name === 'expiry') {
       updatedValue = value.replace(/[^0-9/]/g, '');
     }
-    
+
     setCardDetails(preValue => ({ ...preValue, [name]: updatedValue }));
   }
 
@@ -51,7 +51,7 @@ const Deposit = () => {
       e.preventDefault();
     }
   };
-  
+
   return (
     <div className='deposit-main'>
       <h1 className='heading-main'> Deposit Cash </h1>
@@ -69,7 +69,7 @@ const Deposit = () => {
           {/* Name on Card */}
           <div className="card-name">
             <span>Name on Card</span>
-            <input type="text" className='card-input-value' maxLength={"23"} value={cardDetails.name} onChange={handleChange} name='name' required/>
+            <input type="text" className='card-input-value' maxLength={"23"} value={cardDetails.name} onChange={handleChange} name='name' required />
           </div>
           {/* Card Number */}
           <div className="card-number">
@@ -91,14 +91,14 @@ const Deposit = () => {
             <div className="card-date">
               <span>Valid Through</span>
               <div className="date-inputs">
-                <input 
-                  type="text" 
-                  className='card-input-value-date-2' 
-                  inputMode='text' 
+                <input
+                  type="text"
+                  className='card-input-value-date-2'
+                  inputMode='text'
                   name='expiry'
                   value={cardDetails.date2}
                   onChange={handleChange}
-                  onInput={(e) =>  {
+                  onInput={(e) => {
                     e.target.value = e.target.value.replace(/[^0-9]/g, '')
                   }}
                   maxLength='4'
@@ -141,7 +141,7 @@ const Deposit = () => {
               pattern="[0-9]"
             />
           </div>
-          { showAlert ? <span className='alert'>*Please enter between 100₹ to 10,00,000₹</span> : "" }
+          {showAlert ? <span className='alert'>*Please enter between 100₹ to 10,00,000₹</span> : ""}
           <div className="deposit-btn-div">
             <button className='deposit-btn' onClick={handleWithdraw}>DEPOSIT CASH</button>
           </div>

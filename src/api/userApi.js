@@ -47,6 +47,8 @@ export const superadminLogin = async (data, dispatch, navigate) => {
         navigate('/superadmindashboard');
     } catch (error) {
         console.log(error);
+        error && alert(error.response.data);
+        dispatch(LOGIN_FAILURE());
     }
 }
 

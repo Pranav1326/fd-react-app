@@ -53,8 +53,8 @@ const EditProfile = () => {
   
   return (
     <div className="">
+      <h1 className='edit-profile-heading'>Edit Profile</h1>
       <div className='edit-profile-main'>
-        <h1 className='edit-profile-heading'>Edit Profile</h1>
         <div className="edit-profile-div">
           <div className="name">
             <span>Username</span>
